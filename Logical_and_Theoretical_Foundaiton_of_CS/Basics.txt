@@ -1,4 +1,4 @@
-1. Equivalence relation
+﻿1. Equivalence relation
 **********************
 In mathematics, an equivalence relation is a binary relation that is reflexive, symmetric and transitive. The relation "is equal to" is the canonical example of an equivalence relation, where for any objects a, b, and c:
 a = a (reflexive property),
@@ -25,6 +25,6 @@ For all a, b and c in G, (a • b) • c = a • (b • c).
 There exists an element e in G such that, for every element a in G, the equation e • a = a • e = a holds. Such an element is unique, 
 and thus one speaks of the identity element.
 
-2.4. Inverse element
+2.4. Inverse element (https://proofwiki.org/wiki/Inverse_of_Group_Product)
 ********************
 For each a in G, there exists an element b in G, commonly denoted a−1 (or −a, if the operation is denoted "+"), such that a • b = b • a = e, where e is the identity element.

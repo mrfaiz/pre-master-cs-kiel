@@ -76,6 +76,26 @@ public class LinkedListString {
         return array;
     }
 
+    public void toLinkedList() {
+        // final int M = 100;
+        //String[] array = new String[getSize()];
+        if (head != null) {
+            Node last = head;
+            //  int i = 0;
+            while (true) {
+                if (last.value != null) {
+                    System.out.print(last.value + " -->");
+                }
+                if (last.next == null) {
+                    break;
+                }
+                last = last.next;
+                // i++;
+            }
+        }
+        //return array;
+    }
+
     public int getSize() {
         return size;
     }

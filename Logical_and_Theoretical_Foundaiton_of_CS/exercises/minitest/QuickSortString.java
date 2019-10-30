@@ -26,7 +26,7 @@ public class QuickSortString {
     public int partition(String[] a, int low, int high) {
         String pivot = a[high];
         int i = low - 1;
-       // System.out.println("i=" + i);
+        // System.out.println("i=" + i);
         for (int j = low; j < high; j++) {
             if (a[j].compareTo(pivot) < 0) {
                 i++;
@@ -65,9 +65,9 @@ public class QuickSortString {
     public static void main(String[] args) {
         System.out.println("Quick sort");
         QuickSortString qSort = new QuickSortString();
-        String[] array=qSort.toArray("java FirstMiniTest Hello Kiel University Java Mini Test");
+        String[] array = qSort.toArray("java FirstMiniTest Hello Kiel University Java Mini Test");
         //int[] a = qSort.makeRandomArray(10);
-       // int[] a = {4, 1, 9, 5, 99, 200, 40, 11, 3};
+        // int[] a = {4, 1, 9, 5, 99, 200, 40, 11, 3};
         //System.out.println("Before Sort");
         qSort.printArray(array);
         System.out.println("After Sort");

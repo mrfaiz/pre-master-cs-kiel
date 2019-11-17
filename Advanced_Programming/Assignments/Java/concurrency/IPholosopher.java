@@ -9,6 +9,15 @@ package com.mycompany.OOP.concurrency;
  *
  * @author Faiz Ahmed
  */
-public class Stick {
+public interface IPholosopher {
 
+    void takeSticks();
+
+    void putSticks();
+
+    void eat();
+
+    void think();
+
+    void print(String state);
 }

@@ -122,7 +122,7 @@ public class Account {
      * @param amount
      * @return
      */
-    public boolean transferWithOutDeadLock(Account dest, int amount) {
+    public boolean transferWithoutDeadLock(Account dest, int amount) {
         if (dest.getAccountSerial() < this.getAccountSerial()) {  // This comparison does not work yet, correct it.
             synchronized (dest) {
                 synchronized (this) {
@@ -162,5 +162,4 @@ public class Account {
 //    }
 //
 
- 
 }

@@ -5,19 +5,16 @@
  */
 package com.mycompany.OOP.concurrency;
 
-import java.util.Random;
-
 /**
  *
  * @author Faiz Ahmed
  */
-class PhilosopherThreadSafe2 implements Runnable, IPholosopher {
+public class PhilosopherIndexSwitch implements Runnable, IPholosopher {
 
     final StickWithSemaphore left;
     final StickWithSemaphore right;
-    Random rand = new Random();
 
-    public PhilosopherThreadSafe2(StickWithSemaphore left, StickWithSemaphore right) {
+    public PhilosopherIndexSwitch(StickWithSemaphore left, StickWithSemaphore right) {
         this.left = left;
         this.right = right;
     }
@@ -46,14 +43,12 @@ class PhilosopherThreadSafe2 implements Runnable, IPholosopher {
 
     @Override
     public void takeSticks() {
-        int randomValue = rand.nextInt();
-        if (randomValue % 2 == 0) {
-            this.left.getStickThreadSafe();
-            this.right.getStickThreadSafe();
-        } else {
-            this.right.getStickThreadSafe();
-            this.left.getStickThreadSafe();
+        try {
+            this.left.getStick();
+            this.right.getStick();
+        } catch (InterruptedException e) {
         }
+
     }
 
     @Override
@@ -74,5 +69,26 @@ class PhilosopherThreadSafe2 implements Runnable, IPholosopher {
     @Override
     public void print(String state) {
         System.out.println(Thread.currentThread().getName() + " " + state);
+    }
+
+    public static void main(String[] args) {
+        PhilosopherIndexSwitch[] philosophers = new PhilosopherIndexSwitch[5];
+        StickWithSemaphore[] sticks = new StickWithSemaphore[philosophers.length];
+        for (int i = 0; i < sticks.length; i++) {
+            sticks[i] = new StickWithSemaphore();
+        }
+
+        for (int k = 0; k < philosophers.length; k++) {
+
+            int stickLeft = k;
+            int stickRight = k + 1;
+            if (k == (philosophers.length - 1)) {
+                // stickRight = 0;
+                stickLeft = 0;
+                stickRight = k;
+            }
+            PhilosopherIndexSwitch philosopher = new PhilosopherIndexSwitch(sticks[stickLeft], sticks[stickRight]);
+            new Thread(philosopher, "Philosopher # " + (k + 1) + " (" + stickLeft + "," + stickRight + ") ").start();
+        }
     }
 }

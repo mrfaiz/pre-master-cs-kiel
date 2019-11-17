@@ -70,4 +70,19 @@ public class PhilosopherSync implements Runnable, IPholosopher {
     public void putSticks() {
         // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    public static void main(String[] args) {
+        PhilosopherSync[] philosophers = new PhilosopherSync[5];
+        Stick[] sticks = new Stick[philosophers.length];
+        for (int i = 0; i < sticks.length; i++) {
+            sticks[i] = new StickWithSemaphore();
+        }
+
+        for (int k = 0; k < philosophers.length; k++) {
+            int stickLeft = k;
+            int stickRight = (k + 1) % sticks.length;
+            PhilosopherSync philosopher = new PhilosopherSync(sticks[stickLeft], sticks[stickRight]);
+            new Thread(philosopher, "Philosopher # " + (k + 1)).start();
+        }
+    }
 }

@@ -24,34 +24,19 @@ public class TransferReentrant implements Runnable {
     @Override
     public void run() {
         for (int i = 1; i <= this.amountToTranser; i++) {
-            // this.source.transfer(this.destinaiton, 1);
             this.source.transferWithOutDeadLock(this.destinaiton, 1);
         }
-        System.out.println("Balance of " + Thread.currentThread().getName() + " " + this.source.getBalance());
+        System.out.println("Destinaiton Balance " + Thread.currentThread().getName() + " " + this.destinaiton.getBalance());
     }
 
     public static void main(String[] args) {
         int initAmount = 10000000;
-        int transferAmount = 500;
+        int transferAmount = 500000;
         AccountReentrant a = new AccountReentrant(initAmount, 1);
         AccountReentrant b = new AccountReentrant(initAmount, 2);
-//        Account c = new Account(initAmount, 2);
-//        Account d = new Account(initAmount, 2);
-//        Account e = new Account(initAmount, 2);
-//        Account f = new Account(initAmount, 2);
-
         Thread tha = new Thread(new TransferReentrant(transferAmount, a, b), "A");
-        Thread thb = new Thread(new TransferReentrant(transferAmount, b, a), "B");
-//        Thread thc = new Thread(new Transfer(transferAmount, a, b), "C");
-//        Thread thd = new Thread(new Transfer(transferAmount, b, a), "D");
-//        Thread the = new Thread(new Transfer(transferAmount, a, b), "E");
-//        Thread thf = new Thread(new Transfer(transferAmount, a, b), "F");
+        Thread thb = new Thread(new TransferReentrant(transferAmount, a, b), "B");
         tha.start();
         thb.start();
-//        thc.start();
-//        thd.start();+
-//        the.start();
-//        thf.start();
-
     }
 }

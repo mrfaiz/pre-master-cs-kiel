@@ -9,28 +9,28 @@ package com.mycompany.OOP.concurrency;
  *
  * @author Faiz Ahmed
  */
-public class PhilosopherWN implements Runnable, IPholosopher {
+public class PhilosopherWaitNotify implements Runnable, IPholosopher {
 
-    final StickWait left;
-    final StickWait right;
+    final StickWaitNotify left;
+    final StickWaitNotify right;
 
-    public PhilosopherWN(StickWait left, StickWait right) {
+    public PhilosopherWaitNotify(StickWaitNotify left, StickWaitNotify right) {
         this.left = left;
         this.right = right;
     }
 
     @Override
     public void run() {
-        
-            while (true) {
-                think();
-                try {
-                    takeSticks();
-                    eat();
-                    putSticks();
-                } catch (Exception e) {
-                }
-       //     }
+
+        while (true) {
+            think();
+            try {
+                takeSticks();
+                eat();
+                putSticks();
+            } catch (Exception e) {
+            }
+            //     }
         }
     }
 
@@ -46,17 +46,19 @@ public class PhilosopherWN implements Runnable, IPholosopher {
     @Override
     public void takeSticks() {
         try {
-            this.left.getStick();
-            this.right.getStick();
+            if (this.left.available) {
+                this.left.getStick();
+                if (this.right.available) {
+                    this.right.getStick();
+                } else {
+                    this.left.putStick();
+                }
+            }
         } catch (InterruptedException e) {
         }
 
     }
 
-//    private void takeSticksThreadSafe() {
-//        this.left.getStickThreadSafe();
-//        this.right.getStickThreadSafe();
-//    }
     @Override
     public void putSticks() {
         try {
@@ -81,10 +83,10 @@ public class PhilosopherWN implements Runnable, IPholosopher {
     }
 
     public static void main(String[] args) {
-        PhilosopherThreadSafe2[] philosophers = new PhilosopherThreadSafe2[5];
-        StickWait[] sticks = new StickWait[philosophers.length];
+        PhilosopherSemaphoreDeadLockFree[] philosophers = new PhilosopherSemaphoreDeadLockFree[5];
+        StickWaitNotify[] sticks = new StickWaitNotify[philosophers.length];
         for (int i = 0; i < sticks.length; i++) {
-            sticks[i] = new StickWait();
+            sticks[i] = new StickWaitNotify();
         }
 
         for (int k = 0; k < philosophers.length; k++) {
@@ -94,7 +96,7 @@ public class PhilosopherWN implements Runnable, IPholosopher {
             if (k == (philosophers.length - 1)) {
                 stickRight = 0;
             }
-            PhilosopherWN philosopher = new PhilosopherWN(sticks[stickLeft], sticks[stickRight]);
+            PhilosopherWaitNotify philosopher = new PhilosopherWaitNotify(sticks[stickLeft], sticks[stickRight]);
             new Thread(philosopher, "Philosopher # " + (k + 1) + " (" + stickLeft + "," + stickRight + ") ").start();
         }
 

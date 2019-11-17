@@ -5,16 +5,20 @@
  */
 package com.mycompany.OOP.concurrency;
 
+import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
+
 /**
  *
  * @author Faiz Ahmed
  */
-public class PhilosopherThreadSafe1 implements Runnable, IPholosopher {
+class PhilosopherSemaphoreDeadLockFree implements Runnable, IPholosopher {
 
     final StickWithSemaphore left;
     final StickWithSemaphore right;
+    Random rand = new Random();
 
-    public PhilosopherThreadSafe1(StickWithSemaphore left, StickWithSemaphore right) {
+    public PhilosopherSemaphoreDeadLockFree(StickWithSemaphore left, StickWithSemaphore right) {
         this.left = left;
         this.right = right;
     }
@@ -24,21 +28,6 @@ public class PhilosopherThreadSafe1 implements Runnable, IPholosopher {
         while (true) {
             think();
             try {
-//                if (this.left.semaphore.tryAcquire()) {
-//                    printPhilosopherState("picke up left fork waiting for right..");
-//                    if (this.right.semaphore.tryAcquire()) {
-//                        printPhilosopherState("picke up right fork, ===========eating.");
-//                        eat();
-//                    }
-//                } else if (this.right.semaphore.tryAcquire()) {
-//                    printPhilosopherState("picke up right fork waiting for left..");
-//                    if (this.left.semaphore.tryAcquire()) {
-//                        printPhilosopherState("picked up left fork, ===========eating.");
-//                        eat();
-//                    }
-//                    this.right.putStick();
-//                }
-
                 takeSticks();
                 eat();
                 putSticks();
@@ -51,25 +40,17 @@ public class PhilosopherThreadSafe1 implements Runnable, IPholosopher {
     public void eat() {
         print("====================eating.....");
         try {
-            Thread.sleep(100);
+            Thread.sleep(ThreadLocalRandom.current().nextInt(10, 200));
         } catch (Exception e) {
         }
     }
 
     @Override
     public void takeSticks() {
-        try {
-            this.left.getStick();
-            this.right.getStick();
-        } catch (InterruptedException e) {
-        }
-
+        this.left.getStickThreadSafe();
+        this.right.getStickThreadSafe();
     }
 
-//    private void takeSticksThreadSafe() {
-//        this.left.getStickThreadSafe();
-//        this.right.getStickThreadSafe();
-//    }
     @Override
     public void putSticks() {
         this.left.putStick();
@@ -88,5 +69,23 @@ public class PhilosopherThreadSafe1 implements Runnable, IPholosopher {
     @Override
     public void print(String state) {
         System.out.println(Thread.currentThread().getName() + " " + state);
+    }
+
+    public static void main(String[] args) {
+        PhilosopherSemaphoreDeadLockFree[] philosophers = new PhilosopherSemaphoreDeadLockFree[5];
+        StickWithSemaphore[] sticks = new StickWithSemaphore[philosophers.length];
+        for (int i = 0; i < sticks.length; i++) {
+            sticks[i] = new StickWithSemaphore();
+        }
+
+        for (int k = 0; k < philosophers.length; k++) {
+            int stickLeft = k;
+            int stickRight = k + 1;
+            if (k == (philosophers.length - 1)) {
+                stickRight = 0;
+            }
+            PhilosopherSemaphoreDeadLockFree philosopher = new PhilosopherSemaphoreDeadLockFree(sticks[stickLeft], sticks[stickRight]);
+            new Thread(philosopher, "Philosopher # " + (k + 1) + " (" + stickLeft + "," + stickRight + ") ").start();
+        }
     }
 }

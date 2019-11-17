@@ -73,52 +73,6 @@ public class AccountReentrant {
         }
     }
 
-//    public boolean transfer(Account dest, int amount) {
-//        synchronized (dest) {
-//            synchronized (this) {
-//                if (withdraw(amount)) {
-//                    dest.deposit(amount);
-//                    return true;
-//                } else {
-//                    return false;
-//                }
-//            }
-//        }
-//    }
-//    public boolean transferWithSemaphore(Account dest, int amount) throws InterruptedException {
-//        boolean success = false;
-//        if (dest.getAccountSerial() < this.getAccountSerial()) {  // This comparison does not work yet, correct it.
-//            if (dest.semaphore.availablePermits() > 0) {
-//                dest.semaphore.acquire();
-//                if (this.semaphore.availablePermits() > 0) {
-//                    this.semaphore.acquire();
-//                    if (withdraw(amount)) {
-//                        dest.deposit(amount);
-//                        success = true;
-//                    }
-//                    this.semaphore.release();
-//                }
-//                dest.semaphore.release();
-//            }
-//        } else {
-//            if (this.semaphore.availablePermits() > 0) {
-//                this.semaphore.acquire();
-//                if (dest.semaphore.availablePermits() > 0) {
-//                    dest.semaphore.acquire();
-//                    if (withdraw(amount)) {
-//                        dest.deposit(amount);
-//                        success = true;
-//                    }
-//                    dest.semaphore.release();
-//                }
-//                this.semaphore.release();
-//            } else {
-//                success = false;
-//            }
-//        }
-//        return success;
-//    }
-//
     /**
      * Idea for a deadlock prevention.Compare the accounts and always lock the
      * `smaller` account first. This realtes to having one philosopher taking
@@ -131,21 +85,28 @@ public class AccountReentrant {
     public boolean transferWithOutDeadLock(AccountReentrant dest, int amount) {
         if (dest.getAccountSerial() < this.getAccountSerial()) {  // This comparison does not work yet, correct it.
 
-            try {
+            if (!dest.locker.isLocked()) {
                 dest.locker.lock();
-                // synchronized (this) {
-                if (withdraw(amount)) {
-                    dest.deposit(amount);
-                    return true;
-                } else {
-                    return false;
+                try {
+                    if (!locker.isLocked()) {
+                        try {
+                            if (withdraw(amount)) {
+                                dest.deposit(amount);
+                                return true;
+                            } else {
+                                return false;
+                            }
+                        } catch (Exception e) {
+                        } finally {
+                            locker.unlock();
+                        }
+                    }
+                } catch (Exception e) {
+                } finally {
+                    dest.locker.unlock();
                 }
-            } catch (Exception e) {
-            } finally {
-                dest.locker.unlock();
+                //if()
             }
-            // }
-
         } else {
             try {
                 locker.lock();

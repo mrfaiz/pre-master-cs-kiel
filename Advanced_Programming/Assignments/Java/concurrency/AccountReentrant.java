@@ -83,48 +83,55 @@ public class AccountReentrant {
      * @return
      */
     public boolean transferWithOutDeadLock(AccountReentrant dest, int amount) {
+        boolean success;
         if (dest.getAccountSerial() < this.getAccountSerial()) {  // This comparison does not work yet, correct it.
-
-            if (!dest.locker.isLocked()) {
-                dest.locker.lock();
-                try {
-                    if (!locker.isLocked()) {
-                        try {
-                            if (withdraw(amount)) {
-                                dest.deposit(amount);
-                                return true;
-                            } else {
-                                return false;
+            while (true) {
+                if (!dest.locker.isLocked()) {
+                    dest.locker.lock();
+                    try {
+                        if (!locker.isLocked()) {
+                            try {
+                                if (withdraw(amount)) {
+                                    dest.deposit(amount);
+                                    success = true;
+                                }
+                            } catch (Exception e) {
+                            } finally {
+                                locker.unlock();
                             }
-                        } catch (Exception e) {
-                        } finally {
-                            locker.unlock();
                         }
+                    } catch (Exception e) {
+                    } finally {
+                        dest.locker.unlock();
                     }
-                } catch (Exception e) {
-                } finally {
-                    dest.locker.unlock();
                 }
-                //if()
             }
         } else {
-            try {
-                locker.lock();
-                synchronized (dest) {
-                    if (withdraw(amount)) {
-                        dest.deposit(amount);
-                        return true;
-                    } else {
-                        return false;
+            while (true) {
+                if (!locker.isLocked()) {
+                    locker.lock();
+                    try {
+                        if (!dest.locker.isLocked()) {
+                            try {
+                                if (withdraw(amount)) {
+                                    dest.deposit(amount);
+                                    break;
+                                } else {
+                                    return false;
+                                }
+                            } catch (Exception e) {
+                            } finally {
+                                dest.locker.unlock();
+                            }
+                        }
+                    } catch (Exception e) {
+                    } finally {
+                        locker.unlock();
                     }
+                    //if()
                 }
-            } catch (Exception e) {
-            } finally {
-                locker.unlock();
             }
-
         }
         return false;
     }
-
 }

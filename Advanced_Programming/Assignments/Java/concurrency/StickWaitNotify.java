@@ -13,7 +13,7 @@ public class StickWaitNotify {
 
     boolean available;
 
-    public void getStick() throws InterruptedException {
+    public synchronized void getStick() throws InterruptedException {
 //        synchronized (this) {
         while (!available) {
             wait();

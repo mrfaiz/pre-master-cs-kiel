@@ -28,10 +28,14 @@ class PhilosopherSemaphoreDeadLockFree implements Runnable, IPholosopher {
         while (true) {
             think();
             try {
-                takeSticks();
-                eat();
-                putSticks();
+                //takeSticks();
+                if (takeTwoSticks()) {
+                    eat();
+                    putSticks();
+                }
+
             } catch (Exception e) {
+                e.printStackTrace();
             }
         }
     }
@@ -45,10 +49,41 @@ class PhilosopherSemaphoreDeadLockFree implements Runnable, IPholosopher {
         }
     }
 
+    public boolean takeTwoSticks() throws InterruptedException {
+//        this.left.getStickThreadSafe();
+//        this.right.getStickThreadSafe();
+        boolean take = false;
+        while (true) {
+            if (this.left.semaphore.availablePermits() > 0) {
+                this.left.semaphore.acquire();
+                if (this.right.semaphore.availablePermits() > 0) {
+                    this.right.semaphore.acquire();
+                    take = true;
+                    break;
+                } else {
+                    this.left.semaphore.release();
+                }
+            }
+        }
+        return take;
+    }
+
     @Override
     public void takeSticks() {
-        this.left.getStickThreadSafe();
-        this.right.getStickThreadSafe();
+//        this.left.getStickThreadSafe();
+//        this.right.getStickThreadSafe();
+        try {
+            if (this.left.semaphore.availablePermits() > 0) {
+                this.left.semaphore.acquire();
+                if (this.right.semaphore.availablePermits() > 0) {
+                    this.right.semaphore.acquire();
+                } else {
+                    this.left.semaphore.release();
+                }
+            }
+        } catch (InterruptedException e) {
+        }
+
     }
 
     @Override

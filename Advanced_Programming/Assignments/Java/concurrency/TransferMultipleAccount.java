@@ -25,16 +25,61 @@ public class TransferMultipleAccount implements Runnable {
 
     @Override
     public void run() {
-        for (int i = 1; i <= this.amountToTranser; i++) {
-            collectedTransfer(1, destinaiton, source1, source2);
-
-        }
+//        for (int i = 1; i <= this.amountToTranser; i++) {
+//            collectedTransfer(1, destinaiton, source1, source2);
+//        }
+ collectedTransfer(amountToTranser, destinaiton, source1, source2);
         System.out.println("Balance of " + Thread.currentThread().getName() + " " + this.destinaiton.getBalance());
     }
 
     private boolean collectedTransfer(int balance, Account destination, Account source1, Account source2) {
-        if (source1.getBalance() >= balance && source2.getBalance() >= balance) {
-            if (source1.getAccountSerial() < source2.getAccountSerial()) {
+        if (source1.getBalance() + source2.getBalance() >= balance) {
+            if (destination.getAccountSerial() < source1.getAccountSerial() && source1.getAccountSerial() < source2.getAccountSerial()) {
+                synchronized (destination) {
+                    synchronized (source1) {
+                        synchronized (source2) {
+                            if (source1.withdraw(balance)) {
+                                if (source2.withdraw(balance)) {
+                                    destination.deposit((balance + balance));
+                                    return true;
+                                } else {
+                                    source1.deposit(balance);
+                                }
+                            }
+                        }
+                    }
+                }
+            } else if (destination.getAccountSerial() < source2.getAccountSerial() && source2.getAccountSerial() < source1.getAccountSerial()) {
+                synchronized (destination) {
+                    synchronized (source2) {
+                        synchronized (source1) {
+                            if (source1.withdraw(balance)) {
+                                if (source2.withdraw(balance)) {
+                                    destination.deposit((balance + balance));
+                                    return true;
+                                } else {
+                                    source1.deposit(balance);
+                                }
+                            }
+                        }
+                    }
+                }
+            } else if (source1.getAccountSerial() < destination.getAccountSerial() && destination.getAccountSerial() < source2.getAccountSerial()) {
+                synchronized (source1) {
+                    synchronized (destination) {
+                        synchronized (source2) {
+                            if (source1.withdraw(balance)) {
+                                if (source2.withdraw(balance)) {
+                                    destination.deposit((balance + balance));
+                                    return true;
+                                } else {
+                                    source1.deposit(balance);
+                                }
+                            }
+                        }
+                    }
+                }
+            } else if (source1.getAccountSerial() < source2.getAccountSerial() && source1.getAccountSerial() < destination.getAccountSerial()) {
                 synchronized (source1) {
                     synchronized (source2) {
                         synchronized (destination) {
@@ -49,7 +94,7 @@ public class TransferMultipleAccount implements Runnable {
                         }
                     }
                 }
-            } else {
+            } else if (source2.getAccountSerial() < source1.getAccountSerial() && source1.getAccountSerial() < destination.getAccountSerial()) {
                 synchronized (source2) {
                     synchronized (source1) {
                         synchronized (destination) {
@@ -64,8 +109,57 @@ public class TransferMultipleAccount implements Runnable {
                         }
                     }
                 }
+            } else if (source2.getAccountSerial() < destination.getAccountSerial() && destination.getAccountSerial() < source1.getAccountSerial()) {
+                synchronized (source2) {
+                    synchronized (destination) {
+                        synchronized (source1) {
+                            if (source1.withdraw(balance)) {
+                                if (source2.withdraw(balance)) {
+                                    destination.deposit((balance + balance));
+                                    return true;
+                                } else {
+                                    source1.deposit(balance);
+                                }
+                            }
+                        }
+                    }
+                }
             }
         }
+//        if (source1.getBalance() >= balance && source2.getBalance() >= balance) {
+//            if (source1.getAccountSerial() < source2.getAccountSerial()) {
+//                //  if(source1.getAccountSerial()<destination.){}
+////                synchronized (source1) {
+////                    synchronized (source2) {
+////                        synchronized (destination) {
+////                            if (source1.withdraw(balance)) {
+////                                if (source2.withdraw(balance)) {
+////                                    destination.deposit((balance + balance));
+////                                    return true;
+////                                } else {
+////                                    source1.deposit(balance);
+////                                }
+////                            }
+////                        }
+////                    }
+////                }
+//            } else {
+//                synchronized (source2) {
+//                    synchronized (source1) {
+//                        synchronized (destination) {
+//                            if (source1.withdraw(balance)) {
+//                                if (source2.withdraw(balance)) {
+//                                    destination.deposit((balance + balance));
+//                                    return true;
+//                                } else {
+//                                    source1.deposit(balance);
+//                                }
+//                            }
+//                        }
+//                    }
+//                }
+//            }
+//        }
         return false;
     }
 

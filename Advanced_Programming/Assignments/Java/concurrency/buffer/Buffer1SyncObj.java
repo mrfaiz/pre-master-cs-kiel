@@ -59,12 +59,18 @@ public class Buffer1SyncObj<T> {
     }
 
     public boolean tryPut(T v) throws InterruptedException {
-        synchronized (r) {
-            boolean isEmpty = empty;
-            empty = false;
-            content = v;
-            r.notify();
-            return isEmpty;
+        synchronized (w) {
+            if (empty) {
+                synchronized (r) {
+                    boolean isEmpty = empty;
+                    empty = false;
+                    content = v;
+                    r.notify();
+                    return isEmpty;
+                }
+            } else {
+                return false;
+            }
         }
     }
 
@@ -73,15 +79,23 @@ public class Buffer1SyncObj<T> {
             while (empty) {
                 r.wait();
             }
-            return content;
+            synchronized (w) {
+                T c = content;
+                r.notify();
+                return c;
+            }
         }
     }
 
     public void overwrite(T v) throws InterruptedException {
-        synchronized (r) {
-            empty = false;
+        synchronized (w) {
             content = v;
-            r.notify();
+            if (empty) {
+                synchronized (r) {
+                    empty = false;
+                    r.notify();
+                }
+            }
         }
     }
 
@@ -105,11 +119,12 @@ public class Buffer1SyncObj<T> {
 
     public static void main(String[] args) {
         Buffer1SyncObj<Integer> bf = new Buffer1SyncObj<>();
+        long millis = System.currentTimeMillis();
         try {
             bf.take(1000);
         } catch (InterruptedException | TimeoutException ex) {
             ex.printStackTrace();
         }
-
+        System.out.println(System.currentTimeMillis() - millis);
     }
 }

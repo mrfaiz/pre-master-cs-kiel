@@ -1,0 +1,47 @@
+type signature
+
+The lines after the type signature are the _rules_ of the function
+
+It is also okay to use parentheses for each _individual_ argument (example incr (55))
+
+Sometimes it's _necessary_ to use parentheses {example : plus (inc 41) 1337}
+
+we can use a handy concept called _pattern matching_
+    in order to define the behaviour of the function for a particular input
+
+The most general pattern we can use is a _variable pattern_,
+    we have already seen the usage of variables in the definitions of `inc`,`dec` and `plus` above.
+
+ _checks the rules from top to bottom_.
+
+ The keyword `data` introduces user-defined data types; names of data types start with an upper-case letter.
+
+constructors; constructors always start with a capital letter as well.Constructors are a special kind of functions.
+
+The annotation `deriving Show` generates a suitable function for visualising
+
+
+These definitions for n-tuples are so-called _polymorphic data types_: in addition to the name of the type (e.g., for pairs: `(,)`) they have two additional _type variables_.
+
+ Types like `PairBB` and `PairDB` with one constructor with an arity greater than 1 (that is, with more than one argument) are often called _product types_
+
+ That is, `(,)` is a _type function_ that expects two types as arguments in order yield a type, which works analogue to a function like `(+)` that expects two `Integer` values in order to yield an `Integer` value.
+ 
+What does it mean if we say that a data type is isomorphic to another one?
+   If a data type `A` is isomorphic to a type `B`, we can define functions `aToB :: A -> B` and `bToA :: B -> A` that fulfill the following to properties.
+
+_sum types_
+
+_algebraic data types_: we have an operation for addition (sum types) and multiplication (product types) that are usually connected to an Algebra in mathematics.
+
+Besides defining new data types, Haskell allows the definition of _type synonyms_ in order to use already existing types using a different name
+
+ Operators are special functions: they are named with special characters only.
+
+  _qualified import_ that says that all definitions of these modules are available using a given prefix.
+
+  the disjunction has a higher precedence than the conjuction.
+
+   a type error when trying to run the program (a type error is a compile-time error, not a run-time error!)
+
+   Sometimes it's more convenient to define helper functions (or constants) to clean up the code

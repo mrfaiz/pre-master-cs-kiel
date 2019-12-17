@@ -282,7 +282,7 @@ Constructors are a special kind of functions:
 >   Down  :: Direction   -- <--| constructors of type `Direction`
 >   Left  :: Direction   -- <--|
 >   Right :: Direction   -- <--|
->  deriving Show
+>  deriving (Show,Eq)
 
 When we wanted to test out our examplary value in the REPL, we got the following error message.
 

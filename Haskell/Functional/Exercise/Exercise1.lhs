@@ -116,4 +116,4 @@ How many values of type `Type1` can you construct? Define one constant function 
 > func = C1 True Data.OneC
 
 > func2 :: Type1
-> func2 False = C2 Data.Up True
+> func2 = C2 Data.Up True

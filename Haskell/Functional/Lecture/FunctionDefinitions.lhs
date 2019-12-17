@@ -182,18 +182,18 @@ We can directly translate this truth table into a definition via pattern matchin
 > imp False False = True
 
 As we have seen for the predefined implementations of `(&&)` and `(||)`, we can simplify the pattern matching in case one argument already determines the resulting value.
-   In case of `imp` we can observe that `True` as first argument will yield the second argument as result, and otherwise, that is, for `False`, the function yields `False`.
+   In case of `imp` we can observe that `True` as first argument will yield the second argument as result, and otherwise, that is, for `False`, the function yields `True`.
 
 > impSimplified :: Bool -> Bool -> Bool
 > impSimplified True  y = y
-> impSimplified False _ = False
+> impSimplified False _ = True
 
 Since we are deciding what result to yield based on a value of type `Bool`, we can use an if-then-else-expression instead of pattern matching as well.
       In Haskell an if-then-else expression takes three arguments: the first one is a `Bool`, and the second and third value need to be of the same type.
       For exmaple, the above definintion of `impSimplified` looks as follows using an if-then-else-expression.
   
 > impIf :: Bool -> Bool -> Bool
-> impIf x y = if x then y else False
+> impIf x y = if x then y else True
 
 It is important to keep in mind that expression in the `then`- and `else`-branch need to be of the same type.
    The following expression would yield a type error when trying to run the program (a type error is a compile-time error, not a run-time error!).

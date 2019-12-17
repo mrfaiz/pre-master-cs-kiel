@@ -1,0 +1,294 @@
+Hours of hacking await!
+If I break, you can:
+  1. Restart:           M-x haskell-process-restart
+  2. Configure logging: C-h v haskell-process-log (useful for debugging)
+  3. General config:    M-x customize-mode
+  4. Hide these tips:   C-h v haskell-process-show-debug-tips
+Changed directory: /Users/sad/Documents/Teaching/advanced-programming-ws19/
+λ> :r
+[1 of 1] Compiling Functional.Lecture.Poly ( /Users/sad/Documents/Teaching/advanced-programming-ws19/Functional/Lecture/Poly.hs, interpreted )
+
+/Users/sad/Documents/Teaching/advanced-programming-ws19/Functional/Lecture/Poly.hs:(23,1)-(26,39): error:
+    • Illegal generalised algebraic data declaration for ‘BoolList’
+        (Enable the GADTs extension to allow this)
+    • In the data declaration for ‘BoolList’
+   |
+23 | data BoolList where
+   | ^^^^^^^^^^^^^^^^^^^...
+Failed, modules loaded: none.
+λ> :r
+[1 of 1] Compiling Functional.Lecture.Poly ( /Users/sad/Documents/Teaching/advanced-programming-ws19/Functional/Lecture/Poly.hs, interpreted )
+Ok, modules loaded: Functional.Lecture.Poly.
+λ> intList
+
+<interactive>:8:1-7: error:
+    • No instance for (Show (List Integer))
+        arising from a use of ‘print’
+    • In a stmt of an interactive GHCi command: print it
+λ> :R
+unknown command ':R'
+use :? for help.
+λ> :r
+[1 of 1] Compiling Functional.Lecture.Poly ( /Users/sad/Documents/Teaching/advanced-programming-ws19/Functional/Lecture/Poly.hs, interpreted )
+Ok, modules loaded: Functional.Lecture.Poly.
+λ> intList
+Cons 42 (Cons 12 Nil)
+λ> :r
+[1 of 1] Compiling Functional.Lecture.Poly ( /Users/sad/Documents/Teaching/advanced-programming-ws19/Functional/Lecture/Poly.hs, interpreted )
+Ok, modules loaded: Functional.Lecture.Poly.
+λ> intList 4
+
+<interactive>:13:1-9: error:
+    • Couldn't match expected type ‘Integer -> t’
+                  with actual type ‘List Integer’
+    • The function ‘intList’ is applied to one argument,
+      but its type ‘List Integer’ has none
+      In the expression: intList 4
+      In an equation for ‘it’: it = intList 4
+    • Relevant bindings include it :: t (bound at <interactive>:13:1)
+λ> intList3 4
+Cons 4 (Cons 4 (Cons 4 Nil))
+λ> boolList
+Cons True (Cons False (Cons True Nil))
+λ> Cons False boolList
+Cons False (Cons True (Cons False (Cons True Nil)))
+λ> Cons False (Cons 42 Nil)
+
+<interactive>:17:18-19: error:
+    • No instance for (Num Bool) arising from the literal ‘42’
+    • In the first argument of ‘Cons’, namely ‘42’
+      In the second argument of ‘Cons’, namely ‘(Cons 42 Nil)’
+      In the expression: Cons False (Cons 42 Nil)
+λ> :r
+[1 of 1] Compiling Functional.Lecture.Poly ( /Users/sad/Documents/Teaching/advanced-programming-ws19/Functional/Lecture/Poly.hs, interpreted )
+
+/Users/sad/Documents/Teaching/advanced-programming-ws19/Functional/Lecture/Poly.hs:54:30-31: error:
+    • No instance for (Num Bool) arising from the literal ‘42’
+    • In the first argument of ‘Cons’, namely ‘42’
+      In the second argument of ‘Cons’, namely ‘(Cons 42 Nil)’
+      In the expression: Cons False (Cons 42 Nil)
+   |
+54 | wrongList = Cons False (Cons 42 Nil)
+   |                              ^^
+Failed, modules loaded: none.
+λ> :r
+[1 of 1] Compiling Functional.Lecture.Poly ( /Users/sad/Documents/Teaching/advanced-programming-ws19/Functional/Lecture/Poly.hs, interpreted )
+
+/Users/sad/Documents/Teaching/advanced-programming-ws19/Functional/Lecture/Poly.hs:54:13-36: error:
+    • Couldn't match type ‘Bool’ with ‘Integer’
+      Expected type: List Integer
+        Actual type: List Bool
+    • In the expression: Cons False (Cons 42 Nil)
+      In an equation for ‘wrongList’:
+          wrongList = Cons False (Cons 42 Nil)
+   |
+54 | wrongList = Cons False (Cons 42 Nil)
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^
+Failed, modules loaded: none.
+λ> :r
+[1 of 1] Compiling Functional.Lecture.Poly ( /Users/sad/Documents/Teaching/advanced-programming-ws19/Functional/Lecture/Poly.hs, interpreted )
+Ok, modules loaded: Functional.Lecture.Poly.
+λ> :r
+[1 of 1] Compiling Functional.Lecture.Poly ( /Users/sad/Documents/Teaching/advanced-programming-ws19/Functional/Lecture/Poly.hs, interpreted )
+Ok, modules loaded: Functional.Lecture.Poly.
+λ> :r
+[1 of 1] Compiling Functional.Lecture.Poly ( /Users/sad/Documents/Teaching/advanced-programming-ws19/Functional/Lecture/Poly.hs, interpreted )
+
+/Users/sad/Documents/Teaching/advanced-programming-ws19/Functional/Lecture/Poly.hs:55:30-35: error:
+    Ambiguous occurrence ‘length’
+    It could refer to either ‘Prelude.length’,
+                             imported from ‘Prelude’ at /Users/sad/Documents/Teaching/advanced-programming-ws19/Functional/Lecture/Poly.hs:3:8-30
+                             (and originally defined in ‘Data.Foldable’)
+                          or ‘Functional.Lecture.Poly.length’,
+                             defined at /Users/sad/Documents/Teaching/advanced-programming-ws19/Functional/Lecture/Poly.hs:54:1
+   |
+55 | length (Cons val list) = 1 + length list
+   |                              ^^^^^^
+Failed, modules loaded: none.
+λ> :R
+unknown command ':R'
+use :? for help.
+λ> :r
+[1 of 1] Compiling Functional.Lecture.Poly ( /Users/sad/Documents/Teaching/advanced-programming-ws19/Functional/Lecture/Poly.hs, interpreted )
+Ok, modules loaded: Functional.Lecture.Poly.
+λ> lengthList boolList
+3
+λ> lengthList intList
+2
+λ> lengthList (intList3 5)
+3
+λ> lengthList (Cons 42 (Cons 24 (intList3 5)))
+5
+λ> :r
+[1 of 1] Compiling Functional.Lecture.Poly ( /Users/sad/Documents/Teaching/advanced-programming-ws19/Functional/Lecture/Poly.hs, interpreted )
+Ok, modules loaded: Functional.Lecture.Poly.
+λ> mapList (\n -> n + 1) intList
+Cons 43 (Cons 13 Nil)
+λ> intList
+Cons 42 (Cons 12 Nil)
+λ> mapList (\b -> not b) boolList
+Cons False (Cons True (Cons False Nil))
+λ> boolList
+Cons True (Cons False (Cons True Nil))
+λ> not True
+False
+λ> not False
+True
+λ> mapList (\b -> if b then 42 else 0) boolList
+
+<interactive>:36:26-27: error:
+    • No instance for (Num Bool) arising from the literal ‘42’
+    • In the expression: 42
+      In the expression: if b then 42 else 0
+      In the first argument of ‘mapList’, namely
+        ‘(\ b -> if b then 42 else 0)’
+λ> mapList (\n -> even n) intList
+
+<interactive>:37:24-30: error:
+    • Couldn't match type ‘Integer’ with ‘Bool’
+      Expected type: List Bool
+        Actual type: List Integer
+    • In the second argument of ‘mapList’, namely ‘intList’
+      In the expression: mapList (\ n -> even n) intList
+      In an equation for ‘it’: it = mapList (\ n -> even n) intList
+λ> :r
+[1 of 1] Compiling Functional.Lecture.Poly ( /Users/sad/Documents/Teaching/advanced-programming-ws19/Functional/Lecture/Poly.hs, interpreted )
+Ok, modules loaded: Functional.Lecture.Poly.
+λ> mapList (\b -> if b then 42 else 0) boolList
+Cons 42 (Cons 0 (Cons 42 Nil))
+λ> boolList
+Cons True (Cons False (Cons True Nil))
+λ> mapList (\n -> even n) intList
+Cons True (Cons True Nil)
+λ> intList
+Cons 42 (Cons 12 Nil)
+λ> mapList (\n -> even n) (Cons 13 intList)
+Cons False (Cons True (Cons True Nil))
+λ> :r
+[1 of 1] Compiling Functional.Lecture.Poly ( /Users/sad/Documents/Teaching/advanced-programming-ws19/Functional/Lecture/Poly.hs, interpreted )
+Ok, modules loaded: Functional.Lecture.Poly.
+λ> boolList
+Cons True (Cons False (Cons True Nil))
+λ> filterList (\b -> b) boolList
+Cons True (Cons True Nil)
+λ> (\b -> b) 42
+42
+λ> (\b -> b) True
+True
+λ> (\b -> b) (Cons 42 Nil)
+Cons 42 Nil
+λ> even True
+
+<interactive>:50:1-9: error:
+    • No instance for (Integral Bool) arising from a use of ‘even’
+    • In the expression: even True
+      In an equation for ‘it’: it = even True
+λ> even 42
+True
+λ> (\b x y -> if b then x else y) True 42 12
+42
+λ> (\b x y -> if b then x else y) False 42 12
+12
+λ> (\b -> b) False
+False
+λ> :r
+[1 of 1] Compiling Functional.Lecture.Poly ( /Users/sad/Documents/Teaching/advanced-programming-ws19/Functional/Lecture/Poly.hs, interpreted )
+Ok, modules loaded: Functional.Lecture.Poly.
+λ> filterList (\n -> n > 12) intList
+Cons 42 Nil
+λ> intList
+Cons 42 (Cons 12 Nil)
+λ> :r
+[1 of 1] Compiling Functional.Lecture.Poly ( /Users/sad/Documents/Teaching/advanced-programming-ws19/Functional/Lecture/Poly.hs, interpreted )
+Ok, modules loaded: Functional.Lecture.Poly.
+λ> True : True : False : []
+[True,True,False]
+λ> [12,42,123]
+[12,42,123]
+λ> 1 : [12, 42, 123]
+[1,12,42,123]
+λ> 1 : [12, 42, 123]
+[1,12,42,123]
+λ> [1, 12, 42, 123]
+[1,12,42,123]
+λ> map (\b -> b) [True, False, True]
+[True,False,True]
+λ> map (\b -> not b) [True, False, True]
+[False,True,False]
+λ> map (\b -> or b True) [True, False, True]
+
+<interactive>:66:12-20: error:
+    • Couldn't match expected type ‘Bool -> b’ with actual type ‘Bool’
+    • The function ‘or’ is applied to two arguments,
+      but its type ‘[Bool] -> Bool’ has only one
+      In the expression: or b True
+      In the first argument of ‘map’, namely ‘(\ b -> or b True)’
+    • Relevant bindings include it :: [b] (bound at <interactive>:66:1)
+
+<interactive>:66:24-27: error:
+    • Couldn't match expected type ‘[Bool]’ with actual type ‘Bool’
+    • In the expression: True
+      In the second argument of ‘map’, namely ‘[True, False, True]’
+      In the expression: map (\ b -> or b True) [True, False, True]
+
+<interactive>:66:30-34: error:
+    • Couldn't match expected type ‘[Bool]’ with actual type ‘Bool’
+    • In the expression: False
+      In the second argument of ‘map’, namely ‘[True, False, True]’
+      In the expression: map (\ b -> or b True) [True, False, True]
+
+<interactive>:66:37-40: error:
+    • Couldn't match expected type ‘[Bool]’ with actual type ‘Bool’
+    • In the expression: True
+      In the second argument of ‘map’, namely ‘[True, False, True]’
+      In the expression: map (\ b -> or b True) [True, False, True]
+λ> map (\b -> b || True) [True, False, True]
+[True,True,True]
+λ> map (\n -> even n) [12, 123,14]
+[True,False,True]
+λ> filter (\n -> even n) [12, 123,14]
+[12,14]
+λ> filter (\n -> odd n) [12, 123,14]
+[123]
+λ> :t (,) 
+(,) :: a -> b -> (a, b)
+λ> (,) True 42
+(True,42)
+λ> fst (True,42)
+True
+λ> snd (True,42)
+42
+λ> :r
+[1 of 1] Compiling Functional.Lecture.Poly ( /Users/sad/Documents/Teaching/advanced-programming-ws19/Functional/Lecture/Poly.hs, interpreted )
+
+/Users/sad/Documents/Teaching/advanced-programming-ws19/Functional/Lecture/Poly.hs:209:15-28: error:
+    • Expecting one more argument to ‘Either Integer’
+      Expected a type, but ‘Either Integer’ has kind ‘* -> *’
+    • In the type signature: intOrBool1 :: Either Integer
+    |
+209 | intOrBool1 :: Either Integer
+    |               ^^^^^^^^^^^^^^
+Failed, modules loaded: none.
+λ> :r
+[1 of 1] Compiling Functional.Lecture.Poly ( /Users/sad/Documents/Teaching/advanced-programming-ws19/Functional/Lecture/Poly.hs, interpreted )
+
+/Users/sad/Documents/Teaching/advanced-programming-ws19/Functional/Lecture/Poly.hs:210:14-15: error:
+    • No instance for (Num (Either Integer Bool))
+        arising from the literal ‘42’
+    • In the expression: 42
+      In an equation for ‘intOrBool1’: intOrBool1 = 42
+    |
+210 | intOrBool1 = 42
+    |              ^^
+Failed, modules loaded: none.
+λ> :r
+[1 of 1] Compiling Functional.Lecture.Poly ( /Users/sad/Documents/Teaching/advanced-programming-ws19/Functional/Lecture/Poly.hs, interpreted )
+Ok, modules loaded: Functional.Lecture.Poly.
+λ> :r
+[1 of 1] Compiling Functional.Lecture.Poly ( /Users/sad/Documents/Teaching/advanced-programming-ws19/Functional/Lecture/Poly.hs, interpreted )
+Ok, modules loaded: Functional.Lecture.Poly.
+λ> [[1,2] , [2,3]]
+[[1,2],[2,3]]
+λ> [(1,2) , (2,3)]
+[(1,2),(2,3)]
+λ> 

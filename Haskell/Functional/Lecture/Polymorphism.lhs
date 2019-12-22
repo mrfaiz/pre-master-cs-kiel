@@ -319,6 +319,6 @@ Last but not least, we can use the abstraction mechanism of polymorphic data str
    For example, we define a list of key-value pairs as follows.
 
 > type KeyValuePairs key value = [] ((,) key value)
-> >                           -- we could also write it mixfix: [(key, value)]
+>                           -- we could also write it mixfix: [(key, value)]
 
 As for polymorphic data types, we introduce the type variable on the left-hand side of the type synonym definition, here `key` and `value` are the type parameters corresponding to the types used as first and second component of the pair.

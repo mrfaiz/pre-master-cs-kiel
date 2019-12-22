@@ -77,10 +77,14 @@ The functions should behave as follows.
 In a second step use lambda functions instead of a local function definition.
 
 > incList' :: IntList -> IntList
-> incList' iList = mapList (\n -> n + 1 ) iList
+> incList' iList = mapList ((+) 1) iList
+
+ incList' iList = mapList (\n -> n + 1 ) iList
 
 > greater5List' :: IntList -> IntList
-> greater5List' iList = filterList (\n -> if n >5 then True else False) iList
+> greater5List' iList = filterList ((<) 5) iList
+
+ greater5List' iList = filterList (\n -> if n >5 then True else False) iList
 
 4) Given the `Field` data type from the last exercises.
 
@@ -132,11 +136,14 @@ Reimplement the function `replaceTokenInField` once more using the predefined hi
 > replaceToken Ex.Blank field = field
 > replaceToken Ex.Block field = map (\row -> map (\token ->  Ex.Blank) row) field
 
+--------------------------------------------------
 
-(row -> row)
-    (token -> token)
+> type TokenList tokens = [] tokens
 
-map (map () el) ls
+> tokenList :: TokenList Ex.Token
+> tokenList = [Ex.Block, Ex.Blank, Ex.Block, Ex.Blank]
+
+------------------------------------------------------
 6) We also redefined `CoordMap` using polymorphic lists and pairs.
 
 > -- type Coord  = (Int,Int)
@@ -156,7 +163,7 @@ Here, we again use a type parameter `token` to use `Figure` with an abitrary typ
 Using this type, we can visualise, for example, the following figure.
 
 > exFigure1 :: Figure Ex.Token
-> exFigure1 = [ ((2,1), Ex.Block), ((2,5), Ex.Block), ((3,2), Ex.Block), ((3,4), Ex.Block), ((4,3), Ex.Block), ((5,2), Ex.Block), ((6,1), Ex.Block) ]
+> exFigure1 = [ ((2,1), Ex.Block), ((2,5), Ex.Blank), ((3,2), Ex.Block), ((3,4), Ex.Block), ((4,3), Ex.Block), ((5,2), Ex.Block), ((6,1), Ex.Block) ]
 
    5 |  #
    4 |    # 
@@ -169,13 +176,17 @@ Using this type, we can visualise, for example, the following figure.
 Define a function `lookupCoord` that checks if a given figure contains the specific coordinate: if yes the function should yield the associated token and `Nothing` otherwise.
 
 > lookupCoord :: Coord -> Figure token -> Maybe token
-> lookupCoord = error "lookupCoord: Implement me!"
+> lookupCoord coord [] = Nothing
+> lookupCoord coord ((coordsPair,tkn) : list) = if coord == coordsPair then Just tkn else lookupCoord coord list
 
 7) Define a function `blocks` that yields a figure with only `Block`-values at the coordinates given as first argument.
 
 > blocks :: Coords -> Figure Ex.Token
-> blocks = error "blocks: Implement me!"
+> blocks = map(\param -> (param, Ex.Block)) 
+
+ I can write the same
+  blocks list = map(\param -> (param, Ex.Block)) list
 
 Using this function we can redefined `exFigure1` as follows.
 
-     > exFigure1' = blocks [(2,1), (2,5), (3,2), (3,4), (4,3), (5,2), (6,1)]
+> exFigure1' = blocks [(2,1), (2,5), (3,2), (3,4), (4,3), (5,2), (6,1)]

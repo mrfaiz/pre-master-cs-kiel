@@ -6,3 +6,5 @@
 4. Recursion
 5. HigherOrder
 6. Polymorphism
+7. Folding
+8. InfiniteData

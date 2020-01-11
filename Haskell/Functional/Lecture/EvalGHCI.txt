@@ -1,0 +1,517 @@
+Hello, Haskell!
+If I break, you can:
+  1. Restart:           M-x haskell-process-restart
+  2. Configure logging: C-h v haskell-process-log (useful for debugging)
+  3. General config:    M-x customize-mode
+  4. Hide these tips:   C-h v haskell-process-show-debug-tips
+Changed directory: /Users/sad/Documents/Teaching/advanced-programming-ws19/
+λ> True || False
+True
+λ> :r
+[1 of 1] Compiling Functional.Lecture.Eval ( /Users/sad/Documents/Teaching/advanced-programming-ws19/Functional/Lecture/Eval.hs, interpreted )
+Ok, modules loaded: Functional.Lecture.Eval.
+λ> :R
+unknown command ':R'
+use :? for help.
+λ> :r
+[1 of 1] Compiling Functional.Lecture.Eval ( /Users/sad/Documents/Teaching/advanced-programming-ws19/Functional/Lecture/Eval.hs, interpreted )
+Ok, modules loaded: Functional.Lecture.Eval.
+λ> boolLoop
+Interrupted.
+λ> True || boolLoop
+True
+λ> :R
+unknown command ':R'
+use :? for help.
+λ> :r
+[1 of 1] Compiling Functional.Lecture.Eval ( /Users/sad/Documents/Teaching/advanced-programming-ws19/Functional/Lecture/Eval.hs, interpreted )
+Ok, modules loaded: Functional.Lecture.Eval.
+λ> trues
+[True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,TrueInterrupted.
+λ> :r
+[1 of 1] Compiling Functional.Lecture.Eval ( /Users/sad/Documents/Teaching/advanced-programming-ws19/Functional/Lecture/Eval.hs, interpreted )
+Ok, modules loaded: Functional.Lecture.Eval.
+λ> assignTrue [1,2,3,4,5]
+[(1,True),(2,True),(3,True),(4,True),(5,True)]
+λ> :r
+[1 of 1] Compiling Functional.Lecture.Eval ( /Users/sad/Documents/Teaching/advanced-programming-ws19/Functional/Lecture/Eval.hs, interpreted )
+Ok, modules loaded: Functional.Lecture.Eval.
+λ> numberedList [True,False,True,False]
+[(True,0),(False,1),(True,2),(False,3)]
+λ> :r
+[1 of 1] Compiling Functional.Lecture.Eval ( /Users/sad/Documents/Teaching/advanced-programming-ws19/Functional/Lecture/Eval.hs, interpreted )
+Ok, modules loaded: Functional.Lecture.Eval.
+λ> nats
+[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190,191,192,193,194,195,196,197,198,199,200,201,202,203,204,205,206,207,208,209,210,211,212,213,214,215,216,217,218,219,220,221,222,223,224,225,226,227,228,229,230,231,232,233,234,235,236,237,238,239,240,241,242,243,244,245,246,247,248,249,250,251,252,253,254,255,256,257,258,259,260,261,262,263,264,265,266,267,268,269,270,271,272,273,274,275,276,277,278,279,280,281,282,283,284,285,286,287,288,289,290,291,292,293,294,295,296,297,298,299,300,301,302,303,304,305,306,307,308,309,310,311,312,313,314,315,316,317,318,319,320,321,322,323,324,325,326,327,328,329,330,331,332,333,334,335,336,337,338,339,340,341,342,343,344,345,346,347,348,349,350,351,352,353,354,355,356,357,358,359,360,361,362,363,364,365,366,367,368,369,370,371,372,373,374,375,376,377,378,379,380,381,382,383,384,385,386,387,388,389,390,391,392,393,394,395,396,397,398,399,400,401,402,403,404,405,406,407,408,409,410,411,412,413,414,415,416,417,418,419,420,421,422,423,424,425,426,427,428,429,430,431,432,433,434,435,436,437,438,439,440,441,442,443,444,445,446,447,448,449,450,451,452,453,454,455,456,457,458,459,460,461,462,463,464,465,466,467,468,469,470,471,472,473,474,475,476,Interrupted.
+λ> :r
+[1 of 1] Compiling Functional.Lecture.Eval ( /Users/sad/Documents/Teaching/advanced-programming-ws19/Functional/Lecture/Eval.hs, interpreted )
+
+/Users/sad/Documents/Teaching/advanced-programming-ws19/Functional/Lecture/Eval.hs:48:52-54: error:
+    Ambiguous occurrence ‘zip’
+    It could refer to either ‘Prelude.zip’,
+                             imported from ‘Prelude’ at /Users/sad/Documents/Teaching/advanced-programming-ws19/Functional/Lecture/Eval.hs:3:8-30
+                             (and originally defined in ‘GHC.List’)
+                          or ‘Functional.Lecture.Eval.zip’,
+                             defined at /Users/sad/Documents/Teaching/advanced-programming-ws19/Functional/Lecture/Eval.hs:46:1
+   |
+48 | zip (valA : listA) (valB : listB) = (valA, valB) : zip listA listB
+   |                                                    ^^^
+Failed, modules loaded: none.
+λ> :r
+[1 of 1] Compiling Functional.Lecture.Eval ( /Users/sad/Documents/Teaching/advanced-programming-ws19/Functional/Lecture/Eval.hs, interpreted )
+Ok, modules loaded: Functional.Lecture.Eval.
+λ> zipList [True, False, False] [1,2,3]
+[(True,1),(False,2),(False,3)]
+λ> zipList [True, False, False] [1,2]
+[(True,1),(False,2)]
+λ> zipList [True, False, True] nats
+[(True,0),(False,1),(True,2)]
+λ> zipList [True, False, True, False, True] nats
+[(True,0),(False,1),(True,2),(False,3),(True,4)]
+λ> numberedListZip [True, False, True, False, True]
+
+<interactive>:29:1-15: error:
+    • Variable not in scope: numberedListZip :: [Bool] -> t
+    • Perhaps you meant ‘numberedList’ (line 40)
+λ> :r
+[1 of 1] Compiling Functional.Lecture.Eval ( /Users/sad/Documents/Teaching/advanced-programming-ws19/Functional/Lecture/Eval.hs, interpreted )
+Ok, modules loaded: Functional.Lecture.Eval.
+λ> numberedListZip [True, False, True, False, True]
+[(True,0),(False,1),(True,2),(False,3),(True,4)]
+λ> assignTrueZip [True, False, True, False, True]
+[(True,True),(False,True),(True,True),(False,True),(True,True)]
+λ> assignTrueZip [1,2,3,4,5,6]
+[(1,True),(2,True),(3,True),(4,True),(5,True),(6,True)]
+λ> :r
+[1 of 1] Compiling Functional.Lecture.Eval ( /Users/sad/Documents/Teaching/advanced-programming-ws19/Functional/Lecture/Eval.hs, interpreted )
+Ok, modules loaded: Functional.Lecture.Eval.
+λ> takeList 10 nats
+[0,1,2,3,4,5,6,7,8,9]
+λ> nats
+[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190,191,192,193,194,195,196,197,198,199,200,201,202,203,204,205,206,207,208,209,210,211,212,213,214,215,216,217,218,219,220,221,222,223,224,225,226,227,228,229,230,231,232,233,234,235,236,237,238,239,240,241,242,243,244,245,246,247,248,249,250,251,252,253,254,255,256,257,258,259,260,261,262,263,264,265,266,267,268,269,270,271,272,273,274,275,276,277,278,279,280,281,282,283,284,285,286,287,288,289,290,291,292,293,294,295,296,297,298,299,300,301,302,303,304,305,306,307,308,309,310,311,312,313,314,315,316,317,318,319,320,321,322,323,324,325,326,327,328,329,330,331,332,333,334,335,336,337,338,339,340,341,342,343,344,345,346,347,348,349,350,351,352,353,354,355,356,357,358,359,360,361,362,363,364,365,366,367,368,369,370,371,372,373,374,375,376,377,378,379,380,381,382,383,384,385,386,387,388,389,390,391,392,393,394,395,396,397,398,399,400,401,402,403,404,405,406,407,408,409,410,411,412,413,414,415,416,417,418,419,420,421,422,423,424,425,426,427,428,429,430,431,432,433,434,435,436,437,438,439,440,441,442,443,444,445,446,447,448,449,450,451,452,453,454,455,456,457,458,459,460,461,462,463,464,465,466,467,468,469,470,471,472,473,474,475,476,477,478,479,480,481,482,483,484,485,486,487,488,489,490,491,492,493,494,495,496,497,498,499,500,501,502,503,504,505,506,507,508,509,510,511,512,513,514,515,516,517,518,519,520,521,522,523,524,525,526,527,528,529,530,531,532,533,534,535,536,537,538,539,540,541,542,543,544,545,546,547,548,549,550,551,552,553,554,555,556,557,558,559,560,561,562,563,564,565,566,567,568,569,570,571,572,573,574,575,576,577,578,579,580,581,582,583,584,585,586,587,588,589,590,591,592,593,594,595,596,597,598,599,600,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633,634,635,636,637,638,639,640,641,642,643,644,645,646,647,648,649,650,651,652,653,654,655,656,657,658,659,660,661,662,663,664,665,666,667,668,669,670,671,672,673,674,675,676,677,678,679,680,681,682,683,684,685,686,687,688,689,690,691,692,693,694,695,696,697,698,699,700,701,702,703,704,705,706,707,708,709,710,711,712,713,714,715,716,717,718,719,720,721,722,723,724,725,726,727,728,729,730,731,732,733,734,735,736,737,738,739,740,741,742,743,744,745,746,747,748,749,750,751,752,753,754,755,756,757,758,759,760,761,762,763,764,765,766,767,768,769,770,771,772,773,774,775,776,777,778,779,780,781,782,783,784,785,786,787,788,789,790,791,792,793,794,795,796,797,798,799,800,801,802,803,804,805,806,807,808,809,810,811,812,813,814,815,816,817,818,819,820,821,822,823,824,825,826,827,828,829,830,831,832,833,834,835,836,837,838,839,840,841,842,843,844,845,846,847,848,849,850,851,852,853,854,855,856,857,858,859,860,861,862,863,864,865,866,867,868,869,870,871,872,873,874,875,876,877,878,879,880,881,882,883,884,885,886,887,888,889,890,891,892,893,894,895,896,897,898,899,900,901,902,903,904,905,906,907,908,909,910,911,912,913,914,915,916,917,918,919,920,921,922,923,924,925,926,927,928,929,930,931,932,933,934,935,936,937,938,939,940,941,942,943,944,945,946,947,948,949,950,951,952,953,954,955,956,957,958,959,960,961,962,963,964,965,966,967,968,969,970,971,972,973,974,975,976,977,978,979,980,981,982,983,984,985,986,987,988,989,990,991,992,993,994,995,996,997,998,999,1000,1001,1002,1003,1004,1005,1006,1007,1008,1009,1010,1011,1012,1013,1014,1015,1016,1017,1018,1019,1020,1021,1022,1023,1024,1025,1026,1027,1028,1029,1030,1031,1032,1033,1034,1035,1036,1037,1038,1039,1040,1041,1042,1043,1044,1045,1046,1047,1048,1049,1050,1051,1052,1053,1054,1055,1056,1057,1058,1059,1060,1061,1062,1063,1064,1065,1066,1067,1068,1069,1070,1071,1072,1073,1074,1075,1076,1077,1078,1079,1080,1081,1082,1083,1084,1085,1086,1087,1088,1089,1090,1091,1092,1093,1094,1095,1096,1097,1098,1099,1100,1101,1102,1103,1104,1105,1106,1107,1108,1109,1110,1111,1112,1113,1114,1115,1116,1117,1118,1119,1120,1121,1122,1123,1124,1125,1126,1127,1128,1129,1130,1131,1132,1133,1134,1135,1136,1137,1138,1139,1140,1141,1142,1143,1144,1145,1146,Interrupted.
+λ> takeList 10 nats
+[0,1,2,3,4,5,6,7,8,9]
+λ> :t zip
+zip :: [a] -> [b] -> [(a, b)]
+λ> :t take
+take :: Int -> [a] -> [a]
+λ> :r
+[1 of 1] Compiling Functional.Lecture.Eval ( /Users/sad/Documents/Teaching/advanced-programming-ws19/Functional/Lecture/Eval.hs, interpreted )
+Ok, modules loaded: Functional.Lecture.Eval.
+λ> 2^0
+1
+λ> 2^1
+2
+λ> 2^5
+32
+λ> 2^10
+1024
+λ>  take 10 expontents
+
+<interactive>:45:9-18: error:
+    • Variable not in scope: expontents :: [a]
+    • Perhaps you meant one of these:
+        ‘exponents’ (line 64), ‘exponent’ (imported from Prelude),
+        ‘getContents’ (imported from Prelude)
+λ> take 10 expontents
+
+<interactive>:46:9-18: error:
+    • Variable not in scope: expontents :: [a]
+    • Perhaps you meant one of these:
+        ‘exponents’ (line 64), ‘exponent’ (imported from Prelude),
+        ‘getContents’ (imported from Prelude)
+λ> :r
+Ok, modules loaded: Functional.Lecture.Eval.
+λ> takeList 10 exponents
+[1,2,4,8,16,32,64,128,256,512]
+λ> takeList 11 exponents
+[1,2,4,8,16,32,64,128,256,512,1024]
+λ> :r
+[1 of 1] Compiling Functional.Lecture.Eval ( /Users/sad/Documents/Teaching/advanced-programming-ws19/Functional/Lecture/Eval.hs, interpreted )
+
+/Users/sad/Documents/Teaching/advanced-programming-ws19/Functional/Lecture/Eval.hs:77:33-35: error:
+    • Couldn't match expected type ‘[a]’ with actual type ‘Integer’
+    • In the first argument of ‘indexAt’, namely ‘(n - 1)’
+      In the expression: indexAt (n - 1) list
+      In an equation for ‘indexAt’:
+          indexAt (val : list) n = indexAt (n - 1) list
+    • Relevant bindings include
+        list :: [a]
+          (bound at /Users/sad/Documents/Teaching/advanced-programming-ws19/Functional/Lecture/Eval.hs:77:14)
+        val :: a
+          (bound at /Users/sad/Documents/Teaching/advanced-programming-ws19/Functional/Lecture/Eval.hs:77:10)
+        indexAt :: [a] -> Integer -> Maybe a
+          (bound at /Users/sad/Documents/Teaching/advanced-programming-ws19/Functional/Lecture/Eval.hs:75:1)
+   |
+77 | indexAt (val:list) n = indexAt (n-1) list
+   |                                 ^^^
+
+/Users/sad/Documents/Teaching/advanced-programming-ws19/Functional/Lecture/Eval.hs:77:38-41: error:
+    • Couldn't match expected type ‘Integer’ with actual type ‘[a]’
+    • In the second argument of ‘indexAt’, namely ‘list’
+      In the expression: indexAt (n - 1) list
+      In an equation for ‘indexAt’:
+          indexAt (val : list) n = indexAt (n - 1) list
+    • Relevant bindings include
+        list :: [a]
+          (bound at /Users/sad/Documents/Teaching/advanced-programming-ws19/Functional/Lecture/Eval.hs:77:14)
+        val :: a
+          (bound at /Users/sad/Documents/Teaching/advanced-programming-ws19/Functional/Lecture/Eval.hs:77:10)
+        indexAt :: [a] -> Integer -> Maybe a
+          (bound at /Users/sad/Documents/Teaching/advanced-programming-ws19/Functional/Lecture/Eval.hs:75:1)
+   |
+77 | indexAt (val:list) n = indexAt (n-1) list
+   |                                      ^^^^
+Failed, modules loaded: none.
+λ> :r
+[1 of 1] Compiling Functional.Lecture.Eval ( /Users/sad/Documents/Teaching/advanced-programming-ws19/Functional/Lecture/Eval.hs, interpreted )
+Ok, modules loaded: Functional.Lecture.Eval.
+λ> indexAt trues 16164523547
+Interrupted.
+λ> indexAt trues 1616
+Just True
+λ> indexAt trues 16165
+Just True
+λ> indexAt trues 161651
+Just True
+λ> indexAt trues 1616511
+Just True
+λ> indexAt [1,2,23,4,5,64,6,8,8,979,534,3,36,7586] 0
+Just 1
+λ> indexAt [1,2,23,4,5,64,6,8,8,979,534,3,36,7586] 5
+Just 64
+λ> indexAt nats 1616511
+Just 1616511
+λ> :r
+[1 of 1] Compiling Functional.Lecture.Eval ( /Users/sad/Documents/Teaching/advanced-programming-ws19/Functional/Lecture/Eval.hs, interpreted )
+
+/Users/sad/Documents/Teaching/advanced-programming-ws19/Functional/Lecture/Eval.hs:80:12-36: error:
+    • Couldn't match expected type ‘Integer’
+                  with actual type ‘Maybe Integer’
+    • In the expression: indexAt exponents (pow + 1)
+      In an equation for ‘pow2’: pow2 pow = indexAt exponents (pow + 1)
+   |
+80 | pow2 pow = indexAt exponents (pow+1)
+   |            ^^^^^^^^^^^^^^^^^^^^^^^^^
+Failed, modules loaded: none.
+λ> :r
+[1 of 1] Compiling Functional.Lecture.Eval ( /Users/sad/Documents/Teaching/advanced-programming-ws19/Functional/Lecture/Eval.hs, interpreted )
+Ok, modules loaded: Functional.Lecture.Eval.
+λ> indexAt [1,2,23,4,5] 5
+Nothing
+λ> pow2 5
+Just 64
+λ> pow2 0
+Just 2
+λ> :r
+[1 of 1] Compiling Functional.Lecture.Eval ( /Users/sad/Documents/Teaching/advanced-programming-ws19/Functional/Lecture/Eval.hs, interpreted )
+Ok, modules loaded: Functional.Lecture.Eval.
+λ> pow2 0
+Just 1
+λ> pow2 10
+Just 1024
+λ> pow2 21
+Just 2097152
+λ> pow2 25
+Just 33554432
+λ> pow2 41
+Just 2199023255552
+λ> exponents
+[1,2,4,8,16,32,64,128,256,512,1024,2048,4096,8192,16384,32768,65536,131072,262144,524288,1048576,2097152,4194304,8388608,16777216,33554432,67108864,134217728,268435456,536870912,1073741824,2147483648,4294967296,8589934592,17179869184,34359738368,68719476736,137438953472,274877906944,549755813888,1099511627776,2199023255552,4398046511104,8796093022208,17592186044416,35184372088832,70368744177664,140737488355328,281474976710656,562949953421312,1125899906842624,2251799813685248,4503599627370496,9007199254740992,18014398509481984,36028797018963968,72057594037927936,144115188075855872,288230376151711744,576460752303423488,1152921504606846976,2305843009213693952,4611686018427387904,9223372036854775808,18446744073709551616,36893488147419103232,73786976294838206464,147573952589676412928,295147905179352825856,590295810358705651712,1180591620717411303424,2361183241434822606848,4722366482869645213696,9444732965739290427392,18889465931478580854784,37778931862957161709568,75557863725914323419136,151115727451828646838272,302231454903657293676544,604462909807314587353088,1208925819614629174706176,2417851639229258349412352,4835703278458516698824704,9671406556917033397649408,19342813113834066795298816,38685626227668133590597632,77371252455336267181195264,154742504910672534362390528,309485009821345068724781056,618970019642690137449562112,1237940039285380274899124224,2475880078570760549798248448,4951760157141521099596496896,9903520314283042199192993792,19807040628566084398385987584,39614081257132168796771975168,79228162514264337593543950336,158456325028528675187087900672,316912650057057350374175801344,633825300114114700748351602688,1267650600228229401496703205376,2535301200456458802993406410752,5070602400912917605986812821504,10141204801825835211973625643008,20282409603651670423947251286016,40564819207303340847894502572032,81129638414606681695789005144064,162259276829213363391578010288128,324518553658426726783156020576256,649037107316853453566312041152512,1298074214633706907132624082305024,2596148429267413814265248164610048,5192296858534827628530496329220096,10384593717069655257060992658440192,20769187434139310514121985316880384,41538374868278621028243970633760768,83076749736557242056487941267521536,166153499473114484112975882535043072,332306998946228968225951765070086144,664613997892457936451903530140172288,1329227995784915872903807060280344576,2658455991569831745807614120560689152,5316911983139663491615228241121378304,10633823966279326983230456482242756608,21267647932558653966460912964485513216,42535295865117307932921825928971026432,85070591730234615865843651857942052864,170141183460469231731687303715884105728,340282366920938463463374607431768211456,680564733841876926926749214863536422912,1361129467683753853853498429727072845824,2722258935367507707706996859454145691648,5444517870735015415413993718908291383296,10889035741470030830827987437816582766592,21778071482940061661655974875633165533184,43556142965880123323311949751266331066368,87112285931760246646623899502532662132736,174224571863520493293247799005065324265472,348449143727040986586495598010130648530944,696898287454081973172991196020261297061888,1393796574908163946345982392040522594123776,2787593149816327892691964784081045188247552,5575186299632655785383929568162090376495104,11150372599265311570767859136324180752990208,22300745198530623141535718272648361505980416,44601490397061246283071436545296723011960832,89202980794122492566142873090593446023921664,178405961588244985132285746181186892047843328,356811923176489970264571492362373784095686656,713623846352979940529142984724747568191373312,1427247692705959881058285969449495136382746624,2854495385411919762116571938898990272765493248,5708990770823839524233143877797980545530986496,11417981541647679048466287755595961091061972992,22835963083295358096932575511191922182123945984,45671926166590716193865151022383844364247891968,91343852333181432387730302044767688728495783936,182687704666362864775460604089535377456991567872,365375409332725729550921208179070754913983135744,730750818665451459101842416358141509827966271488,1461501637330902918203684832716283019655932542976,2923003274661805836407369665432566039311865085952,5846006549323611672814739330865132078623730171904,11692013098647223345629478661730264157247460343808,23384026197294446691258957323460528314494920687616,46768052394588893382517914646921056628989841375232,93536104789177786765035829293842113257979682750464,187072209578355573530071658587684226515959365500928,374144419156711147060143317175368453031918731001856,748288838313422294120286634350736906063837462003712,1496577676626844588240573268701473812127674924007424,2993155353253689176481146537402947624255349848014848,5986310706507378352962293074805895248510699696029696,11972621413014756705924586149611790497021399392059392,23945242826029513411849172299223580994042798784118784,47890485652059026823698344598447161988085597568237568,95780971304118053647396689196894323976171195136475136,191561942608236107294793378393788647952342390272950272,383123885216472214589586756787577295904684780545900544,766247770432944429179173513575154591809369561091801088,1532495540865888858358347027150309183618739122183602176,3064991081731777716716694054300618367237478244367204352,6129982163463555433433388108601236734474956488734408704,12259964326927110866866776217202473468949912977468817408,24519928653854221733733552434404946937899825954937634816,49039857307708443467467104868809893875799651909875269632,98079714615416886934934209737619787751599303819750539264,196159429230833773869868419475239575503198607639501078528,392318858461667547739736838950479151006397215279002157056,784637716923335095479473677900958302012794430558004314112,1569275433846670190958947355801916604025588861116008628224,3138550867693340381917894711603833208051177722232017256448,6277101735386680763835789423207666416102355444464034512896,12554203470773361527671578846415332832204710888928069025792,25108406941546723055343157692830665664409421777856138051584,50216813883093446110686315385661331328818843555712276103168,100433627766186892221372630771322662657637687111424552206336,200867255532373784442745261542645325315275374222849104412672,401734511064747568885490523085290650630550748445698208825344,803469022129495137770981046170581301261101496891396417650688,1606938044258990275541962092341162602522202993782792835301376,3213876088517980551083924184682325205044405987565585670602752,6427752177035961102167848369364650410088811975131171341205504,12855504354071922204335696738729300820177623950262342682411008,25711008708143844408671393477458601640355247900524685364822016,51422017416287688817342786954917203280710495801049370729644032,102844034832575377634685573909834406561420991602098741459288064,205688069665150755269371147819668813122841983204197482918576128,411376139330301510538742295639337626245683966408394965837152256,822752278660603021077484591278675252491367932816789931674304512,1645504557321206042154969182557350504982735865633579863348609024,3291009114642412084309938365114701009965471731267159726697218048,6582018229284824168619876730229402019930943462534319453394436096,13164036458569648337239753460458804039861886925068638906788872192,26328072917139296674479506920917608079723773850137277813577744384,52656145834278593348959013841835216159447547700274555627155488768,105312291668557186697918027683670432318895095400549111254310977536,210624583337114373395836055367340864637790190801098222508621955072,421249166674228746791672110734681729275580381602196445017243910144,842498333348457493583344221469363458551160763204392890034487820288,1684996666696914987166688442938726917102321526408785780068975640576,3369993333393829974333376885877453834204643052817571560137951281152,6739986666787659948666753771754907668409286105635143120275902562304,13479973333575319897333507543509815336818572211270286240551805124608,26959946667150639794667015087019630673637144422540572481103610249216,53919893334301279589334030174039261347274288845081144962207220498432,107839786668602559178668060348078522694548577690162289924414440996864,215679573337205118357336120696157045389097155380324579848828881993728,431359146674410236714672241392314090778194310760649159697657763987456,862718293348820473429344482784628181556388621521298319395315527974912,1725436586697640946858688965569256363112777243042596638790631055949824,3450873173395281893717377931138512726225554486085193277581262111899648,6901746346790563787434755862277025452451108972170386555162524223Interrupted.
+λ> :t take
+take :: Int -> [a] -> [a]
+λ> :r
+[1 of 1] Compiling Functional.Lecture.Eval ( /Users/sad/Documents/Teaching/advanced-programming-ws19/Functional/Lecture/Eval.hs, interpreted )
+Ok, modules loaded: Functional.Lecture.Eval.
+λ> exponentsInt
+[1,2,4,8,16,32,64,128,256,512,1024,2048,4096,8192,16384,32768,65536,131072,262144,524288,1048576,2097152,4194304,8388608,16777216,33554432,67108864,134217728,268435456,536870912,1073741824,2147483648,4294967296,8589934592,17179869184,34359738368,68719476736,137438953472,274877906944,549755813888,1099511627776,2199023255552,4398046511104,8796093022208,17592186044416,35184372088832,70368744177664,140737488355328,281474976710656,562949953421312,1125899906842624,2251799813685248,4503599627370496,9007199254740992,18014398509481984,36028797018963968,72057594037927936,144115188075855872,288230376151711744,576460752303423488,1152921504606846976,2305843009213693952,4611686018427387904,-9223372036854775808,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Interrupted.
+λ> :r
+[1 of 1] Compiling Functional.Lecture.Eval ( /Users/sad/Documents/Teaching/advanced-programming-ws19/Functional/Lecture/Eval.hs, interpreted )
+
+/Users/sad/Documents/Teaching/advanced-programming-ws19/Functional/Lecture/Eval.hs:54:48-58: error:
+    • Couldn't match expected type ‘Integer’ with actual type ‘Int’
+    • In the second argument of ‘makeList’, namely ‘(length list)’
+      In the second argument of ‘zipList’, namely
+        ‘(makeList 0 (length list))’
+      In the expression: zipList list (makeList 0 (length list))
+   |
+54 | numberedList2 list = zipList list (makeList 0 (length list))
+   |                                                ^^^^^^^^^^^
+
+/Users/sad/Documents/Teaching/advanced-programming-ws19/Functional/Lecture/Eval.hs:58:37-44: error:
+    • Variable not in scope:
+        makeLike :: Integer -> Integer -> [Integer]
+    • Perhaps you meant ‘makeList’ (line 57)
+   |
+58 |                        then start : makeLike (start + 1) end
+   |                                     ^^^^^^^^
+Failed, modules loaded: none.
+λ> :r
+[1 of 1] Compiling Functional.Lecture.Eval ( /Users/sad/Documents/Teaching/advanced-programming-ws19/Functional/Lecture/Eval.hs, interpreted )
+
+/Users/sad/Documents/Teaching/advanced-programming-ws19/Functional/Lecture/Eval.hs:54:48-58: error:
+    • Couldn't match expected type ‘Integer’ with actual type ‘Int’
+    • In the second argument of ‘makeList’, namely ‘(length list)’
+      In the second argument of ‘zipList’, namely
+        ‘(makeList 0 (length list))’
+      In the expression: zipList list (makeList 0 (length list))
+   |
+54 | numberedList2 list = zipList list (makeList 0 (length list))
+   |                                                ^^^^^^^^^^^
+Failed, modules loaded: none.
+λ> :t length
+length :: Foldable t => t a -> Int
+λ> :r
+[1 of 1] Compiling Functional.Lecture.Eval ( /Users/sad/Documents/Teaching/advanced-programming-ws19/Functional/Lecture/Eval.hs, interpreted )
+Ok, modules loaded: Functional.Lecture.Eval.
+λ> makeList 0 5
+[]
+λ> :r
+[1 of 1] Compiling Functional.Lecture.Eval ( /Users/sad/Documents/Teaching/advanced-programming-ws19/Functional/Lecture/Eval.hs, interpreted )
+Ok, modules loaded: Functional.Lecture.Eval.
+λ> makeList 0 5
+[0,1,2,3,4,5]
+λ> numberedList2 [True,False,True,False]
+[(True,0),(False,1),(True,2),(False,3)]
+λ> :r
+[1 of 1] Compiling Functional.Lecture.Eval ( /Users/sad/Documents/Teaching/advanced-programming-ws19/Functional/Lecture/Eval.hs, interpreted )
+Ok, modules loaded: Functional.Lecture.Eval.
+λ> lengthList [1,2,3,4,5,6]
+6
+λ> lengthList [1,2,3,4,5,6,7,8,9,10]
+10
+λ> :r
+[1 of 1] Compiling Functional.Lecture.Eval ( /Users/sad/Documents/Teaching/advanced-programming-ws19/Functional/Lecture/Eval.hs, interpreted )
+Ok, modules loaded: Functional.Lecture.Eval.
+λ> sumList [1,2,3]
+6
+λ> 1 + 2 + 3 + 0
+6
+λ> :r
+[1 of 1] Compiling Functional.Lecture.Eval ( /Users/sad/Documents/Teaching/advanced-programming-ws19/Functional/Lecture/Eval.hs, interpreted )
+
+/Users/sad/Documents/Teaching/advanced-programming-ws19/Functional/Lecture/Eval.hs:106:32-42: error:
+    • Couldn't match expected type ‘Int’
+                  with actual type ‘[Int] -> Int’
+    • Probable cause: ‘productList’ is applied to too few arguments
+      In the second argument of ‘(*)’, namely ‘productList’
+      In the expression: val * productList
+      In an equation for ‘productList’:
+          productList (val : list) = val * productList
+    |
+106 | productList (val:list) = val * productList
+    |                                ^^^^^^^^^^^
+Failed, modules loaded: none.
+λ> :r
+[1 of 1] Compiling Functional.Lecture.Eval ( /Users/sad/Documents/Teaching/advanced-programming-ws19/Functional/Lecture/Eval.hs, interpreted )
+Ok, modules loaded: Functional.Lecture.Eval.
+λ> productList [1,2,3]
+6
+λ> productList [1,2,3,4]
+24
+λ> sumList [1,2,3,4]
+10
+λ> :r
+[1 of 1] Compiling Functional.Lecture.Eval ( /Users/sad/Documents/Teaching/advanced-programming-ws19/Functional/Lecture/Eval.hs, interpreted )
+
+/Users/sad/Documents/Teaching/advanced-programming-ws19/Functional/Lecture/Eval.hs:111:35-44: error:
+    • Couldn't match expected type ‘[Int]’ with actual type ‘Int’
+    • In the first argument of ‘hasElem’, namely ‘elemToFind’
+      In the second argument of ‘(||)’, namely
+        ‘(hasElem elemToFind list)’
+      In the expression: (val == elemToFind) || (hasElem elemToFind list)
+    |
+111 |   (val == elemToFind) || (hasElem elemToFind list)
+    |                                   ^^^^^^^^^^
+
+/Users/sad/Documents/Teaching/advanced-programming-ws19/Functional/Lecture/Eval.hs:111:46-49: error:
+    • Couldn't match expected type ‘Int’ with actual type ‘[Int]’
+    • In the second argument of ‘hasElem’, namely ‘list’
+      In the second argument of ‘(||)’, namely
+        ‘(hasElem elemToFind list)’
+      In the expression: (val == elemToFind) || (hasElem elemToFind list)
+    |
+111 |   (val == elemToFind) || (hasElem elemToFind list)
+    |                                              ^^^^
+Failed, modules loaded: none.
+λ> :r
+[1 of 1] Compiling Functional.Lecture.Eval ( /Users/sad/Documents/Teaching/advanced-programming-ws19/Functional/Lecture/Eval.hs, interpreted )
+Ok, modules loaded: Functional.Lecture.Eval.
+λ> hasElem [1,2,3,4,5] 3
+True
+λ> [1,2,3,4,5] `hasElem` 3
+True
+λ> :r
+[1 of 1] Compiling Functional.Lecture.Eval ( /Users/sad/Documents/Teaching/advanced-programming-ws19/Functional/Lecture/Eval.hs, interpreted )
+
+/Users/sad/Documents/Teaching/advanced-programming-ws19/Functional/Lecture/Eval.hs:116:42-59: error:
+    • Couldn't match expected type ‘Int’ with actual type ‘Int -> Int’
+    • Probable cause: ‘(+)’ is applied to too few arguments
+      In the expression: 1 + countElem list
+      In the expression:
+        if val == elemToFind then 1 + countElem list else countElem list
+      In an equation for ‘countElem’:
+          countElem (val : list) elemToFind
+            = if val == elemToFind then 1 + countElem list else countElem list
+    |
+116 |                                     then 1 + countElem list
+    |                                          ^^^^^^^^^^^^^^^^^^
+
+/Users/sad/Documents/Teaching/advanced-programming-ws19/Functional/Lecture/Eval.hs:117:42-55: error:
+    • Couldn't match expected type ‘Int’ with actual type ‘Int -> Int’
+    • Probable cause: ‘countElem’ is applied to too few arguments
+      In the expression: countElem list
+      In the expression:
+        if val == elemToFind then 1 + countElem list else countElem list
+      In an equation for ‘countElem’:
+          countElem (val : list) elemToFind
+            = if val == elemToFind then 1 + countElem list else countElem list
+    |
+117 |                                     else countElem list
+    |                                          ^^^^^^^^^^^^^^
+Failed, modules loaded: none.
+λ> :r
+[1 of 1] Compiling Functional.Lecture.Eval ( /Users/sad/Documents/Teaching/advanced-programming-ws19/Functional/Lecture/Eval.hs, interpreted )
+
+/Users/sad/Documents/Teaching/advanced-programming-ws19/Functional/Lecture/Eval.hs:116:42-59: error:
+    • Couldn't match expected type ‘Int’ with actual type ‘Int -> Int’
+    • Probable cause: ‘(+)’ is applied to too few arguments
+      In the expression: 1 + countElem list
+      In the expression:
+        if val == elemToFind then
+            1 + countElem list
+        else
+            countElem list elemToFind
+      In an equation for ‘countElem’:
+          countElem (val : list) elemToFind
+            = if val == elemToFind then
+                  1 + countElem list
+              else
+                  countElem list elemToFind
+    |
+116 |                                     then 1 + countElem list
+    |                                          ^^^^^^^^^^^^^^^^^^
+Failed, modules loaded: none.
+λ> :r
+[1 of 1] Compiling Functional.Lecture.Eval ( /Users/sad/Documents/Teaching/advanced-programming-ws19/Functional/Lecture/Eval.hs, interpreted )
+Ok, modules loaded: Functional.Lecture.Eval.
+λ> countElem [1,2,3,4,5,1] 1
+2
+λ> countElem [1,2,3,4,5,1] 5
+1
+λ> countElem [1,2,3,4,5,1] 46
+0
+λ> :r
+[1 of 1] Compiling Functional.Lecture.Eval ( /Users/sad/Documents/Teaching/advanced-programming-ws19/Functional/Lecture/Eval.hs, interpreted )
+Ok, modules loaded: Functional.Lecture.Eval.
+λ> indicesForElem [True,False,True,False] True
+
+<interactive>:105:17-20: error:
+    • Couldn't match expected type ‘Int’ with actual type ‘Bool’
+    • In the expression: True
+      In the first argument of ‘indicesForElem’, namely
+        ‘[True, False, True, False]’
+      In the expression: indicesForElem [True, False, True, False] True
+
+<interactive>:105:22-26: error:
+    • Couldn't match expected type ‘Int’ with actual type ‘Bool’
+    • In the expression: False
+      In the first argument of ‘indicesForElem’, namely
+        ‘[True, False, True, False]’
+      In the expression: indicesForElem [True, False, True, False] True
+
+<interactive>:105:28-31: error:
+    • Couldn't match expected type ‘Int’ with actual type ‘Bool’
+    • In the expression: True
+      In the first argument of ‘indicesForElem’, namely
+        ‘[True, False, True, False]’
+      In the expression: indicesForElem [True, False, True, False] True
+
+<interactive>:105:33-37: error:
+    • Couldn't match expected type ‘Int’ with actual type ‘Bool’
+    • In the expression: False
+      In the first argument of ‘indicesForElem’, namely
+        ‘[True, False, True, False]’
+      In the expression: indicesForElem [True, False, True, False] True
+
+<interactive>:105:40-43: error:
+    • Couldn't match expected type ‘Int’ with actual type ‘Bool’
+    • In the second argument of ‘indicesForElem’, namely ‘True’
+      In the expression: indicesForElem [True, False, True, False] True
+      In an equation for ‘it’:
+          it = indicesForElem [True, False, True, ....] True
+λ> indicesForElem [1,2,3,4,5,1,2,3] 1
+[0,5]
+λ> indicesForElem [1,2,3,4,5,1,2,3] 2
+[1,6]
+λ> indicesForElem [1,2,3,4,5,1,2,3] 3
+[2,7]
+λ> indicesForElem [1,2,3,4,5,1,2,3] 4
+[3]
+λ> :r
+[1 of 1] Compiling Functional.Lecture.Eval ( /Users/sad/Documents/Teaching/advanced-programming-ws19/Functional/Lecture/Eval.hs, interpreted )
+
+/Users/sad/Documents/Teaching/advanced-programming-ws19/Functional/Lecture/Eval.hs:121:38-41: error:
+    • Couldn't match type ‘a’ with ‘Int’
+      ‘a’ is a rigid type variable bound by
+        the type signature for:
+          lenghtListFold :: forall a. [a] -> Int
+        at /Users/sad/Documents/Teaching/advanced-programming-ws19/Functional/Lecture/Eval.hs:120:1-29
+      Expected type: [Int]
+        Actual type: [a]
+    • In the third argument of ‘foldList’, namely ‘list’
+      In the expression: foldList eF cF list
+      In an equation for ‘lenghtListFold’:
+          lenghtListFold list
+            = foldList eF cF list
+            where
+                eF :: Int
+                eF = 0
+                cF :: Int -> Int -> Int
+                cF val res = 1 + res
+    • Relevant bindings include
+        list :: [a]
+          (bound at /Users/sad/Documents/Teaching/advanced-programming-ws19/Functional/Lecture/Eval.hs:121:16)
+        lenghtListFold :: [a] -> Int
+          (bound at /Users/sad/Documents/Teaching/advanced-programming-ws19/Functional/Lecture/Eval.hs:121:1)
+    |
+121 | lenghtListFold list = foldList eF cF list
+    |                                      ^^^^
+Failed, modules loaded: none.
+λ> :r
+[1 of 1] Compiling Functional.Lecture.Eval ( /Users/sad/Documents/Teaching/advanced-programming-ws19/Functional/Lecture/Eval.hs, interpreted )
+Ok, modules loaded: Functional.Lecture.Eval.
+λ> productList [1,2,3,4,5]
+120
+λ> productListFold [1,2,3,4,5]
+120
+λ> foldList 1 (\val res -> val * res) [1,2,3,4,5]
+120
+λ> foldList 1 (\val res -> val * res) [1,2]
+2
+λ> :r
+[1 of 1] Compiling Functional.Lecture.Eval ( /Users/sad/Documents/Teaching/advanced-programming-ws19/Functional/Lecture/Eval.hs, interpreted )
+
+/Users/sad/Documents/Teaching/advanced-programming-ws19/Functional/Lecture/Eval.hs:(191,1)-(215,0): error:
+    unterminated `{-'
+    |
+191 | {-
+    | ^^...
+Failed, modules loaded: none.
+λ> :r
+[1 of 1] Compiling Functional.Lecture.Eval ( /Users/sad/Documents/Teaching/advanced-programming-ws19/Functional/Lecture/Eval.hs, interpreted )
+
+/Users/sad/Documents/Teaching/advanced-programming-ws19/Functional/Lecture/Eval.hs:(191,1)-(215,0): error:
+    unterminated `{-'
+    |
+191 | {-
+    | ^^...
+Failed, modules loaded: none.
+λ> :r
+[1 of 1] Compiling Functional.Lecture.Eval ( /Users/sad/Documents/Teaching/advanced-programming-ws19/Functional/Lecture/Eval.hs, interpreted )
+Ok, modules loaded: Functional.Lecture.Eval.
+λ> while (\x -> x < 4) 1 (\x -> x + 1)
+4
+λ> :t (+)
+(+) :: Num a => a -> a -> a
+λ> 

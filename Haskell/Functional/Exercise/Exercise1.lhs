@@ -97,11 +97,11 @@ E
 >  T :: Token
 >  Z :: Token 
 
-> prettyToken :: Token -> String
-> prettyToken A = "          *\n        *   *\n      *       *\n   * * * * * * *\n *               *\n*                 *"
-> prettyToken T = "***********\n*         \n*                  \n*\n*"
-> prettyToken E = "* * * * * *\n*\n*\n* * * * * *\n*\n*\n* * * * * *"
-> prettyToken Z = "* * * * * *\n        *\n      *\n    *\n *\n* * * * * *";
+> prettyToken :: Token -> IO ()
+> prettyToken A = putStrLn "          *\n        *   *\n      *       *\n   * * * * * * *\n *               *\n*                 *"
+> prettyToken T = putStrLn "***********\n*         \n*                  \n*\n*"
+> prettyToken E = putStrLn "* * * * * *\n*\n*\n* * * * * *\n*\n*\n* * * * * *"
+> prettyToken Z = putStrLn "* * * * * *\n        *\n      *\n    *\n *\n* * * * * *";
 
 5) Given the following data type.
 

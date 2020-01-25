@@ -188,6 +188,12 @@ As we have seen for the predefined implementations of `(&&)` and `(||)`, we can 
 > impSimplified True  y = y
 > impSimplified False _ = True
 
+
+infixr 1 ==>
+(==>) :: Bool -> Bool -> Bool
+(==>) True y = y  
+(==>) _ _    = True
+
 Since we are deciding what result to yield based on a value of type `Bool`, we can use an if-then-else-expression instead of pattern matching as well.
       In Haskell an if-then-else expression takes three arguments: the first one is a `Bool`, and the second and third value need to be of the same type.
       For exmaple, the above definintion of `impSimplified` looks as follows using an if-then-else-expression.
@@ -256,3 +262,8 @@ The line `infixr 1 ==>` specifies that the operator `(==>)` is right-associative
      we are allowed to write the above version that uses `(==>)` as infix operator as follows.
 
         b1 ==> b2 = imp b1 b2
+
+> function1 :: Bool -> Bool -> Bool
+> function1 x notX = notX || False
+>  where
+>   notX = not x 

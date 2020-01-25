@@ -7,13 +7,10 @@
 > loop :: a
 > loop = loop
 >
-> nats :: [Int]
+> nats :: [] Int
 > nats = nats' 0
 >  where nats' n = n : nats' (n+1)
 
-where nats' 100 = []
-      nats' n = n : nats' (n+1)
-      
 Which of the following expressions terminate?
 
       a) take 10 nats
@@ -22,24 +19,19 @@ Which of the following expressions terminate?
       d) take 13 (map (\x -> x + 1) nats)
       e) zip [True, False, True, True] nats
 
-
+a) terminates
+b) does not terminate
+c) does not terminate
+d) terminates
+d) terminates
+      
 2) We define a polymorphic data type for binary trees with (polymorphic) elements in their leaves as follows.
 
 > data Tree a where
 >   Leaf  :: a -> Tree a
 >   Node  :: Tree a -> Tree a -> Tree a
->   deriving Show
 
  That is, we can represent a tree with one value using `Leaf` and a tree with two subtrees using `Node`.
-
-> testTreeR :: Tree Int
-> testTreeR = Node (Node (Leaf 2) (Leaf 3)) (Leaf 7) 
-
-> testTreeL :: Tree Int
-> testTreeL = Node (Leaf 5) (Leaf 6)
-
-> mainTree :: Tree Int
-> mainTree = Node testTreeL testTreeR
 
 We can define a mapping and a folding function for `Tree a` with the following types.
 
@@ -55,30 +47,23 @@ Observe that these definitions following the same scheme as for lists: a mapping
 
 Now define the following functions using `mapTree` and `foldTree`, respectively.
 
-> boolTree :: Tree Bool
-> boolTree = Node (Leaf True) (Leaf False)
-
 > negateTree :: Tree Bool -> Tree Bool
 > negateTree t = mapTree elemF t
 >  where
->   elemF x = not x
+>   elemF b = not b
 >
 > sumTree :: Tree Int -> Int
 > sumTree t = foldTree leafF nodeF t
 >  where
->   leafF = id
->   nodeF = (+)
+>   leafF i = i
+>   nodeF sum1 sum2 = sum1 + sum2
 >
 > values :: Tree Int -> [Int]
 > values t = foldTree leafF nodeF t
 >  where
->   leafF x = [x]
->   nodeF  = (++)
+>   leafF i = [i]
+>   nodeF list1 list2 = list1 ++ list2
 
-concate two lists [x] [y]
-x ++ y
-x y = (++) x y
-nodeF = (++)
 
 3) The `foldList` function we defined in the lecture is predefined as `foldr :: (a -> b -> b) -> b -> [a] -> b` in Haskell. Reimplement the function `countElem` given in the lecture using `foldr`.
 
@@ -91,7 +76,7 @@ nodeF = (++)
 > countElem :: [] Int -> Int -> Int
 > countElem list elemToFind = foldr consF emptyF list
 >  where
->   consF = (\element remList -> if element == elemToFind then 1+remList else remList) 
+>   consF i 8 = if i == elemToFind then count + 1 else count
 >   emptyF = 0
 
 4) Given the following data type to represent arithmetic expression consisting of numeric values, an addition or multiplication.
@@ -100,13 +85,12 @@ nodeF = (++)
 >   Num  :: Int -> Expr
 >   Add  :: Expr -> Expr -> Expr
 >   Mult :: Expr -> Expr -> Expr
->   deriving Show
-           
+
 Give three exemplary values for arithmetic expressions that represent the expression given in the comment above.
 
 > -- 1 + (2 * 3)
 > expr1 :: Expr
-> expr1 = Add (Num 1) (Mult (Num 2) (Num 3)) 
+> expr1 = Add (Num 1) (Mult (Num 2) (Num 3))
 >
 > -- (1 + 2) * 3
 > expr2 :: Expr
@@ -119,9 +103,9 @@ Give three exemplary values for arithmetic expressions that represent the expres
 Define a function `value` that interpretes the `Expr`-data type by replacing the constructors `Add` and `Mult` with the concrete addition and multiplication operator.
 
 > value :: Expr -> Int
-> value (Num x) = x
-> value (Add ex1 ex2) = (value ex1) + (value ex2)
-> value (Mult ex1 ex2) = (value ex1) * (value ex2) 
+> value (Num i) = i
+> value (Add e1 e2) = value e1 + value e2
+> value (Mult e1 e2) = value e1 * value e2
 
 For example, the function should yield the following result for the above expressions.
 
@@ -132,44 +116,28 @@ For example, the function should yield the following result for the above expres
    $> value expr3
    21
 
-Complete the signature for the mapping and folding function corresponding to the given type and implement these functions. The mapping function enables us to apply a function on the `Int` occurs in the `Num`-constructor.
-
- The folding function is a higher-order function that enables us to exchange the constructors of a given `Expr`-values with functions in order to compute a new value.
+Complete the signature for the mapping and folding function corresponding to the given type and implement these functions. The mapping function enables us to apply a function on the `Int` occurs in the `Num`-constructor. The folding function is a higher-order function that enables us to exchange the constructors of a given `Expr`-values with functions in order to compute a new value.
 
 > mapExpr :: (Int -> Int) -> Expr -> Expr
-> mapExpr f (Num n) = Num (f n)
-> mapExpr f (Mult ex1 ex2) = Mult (mapExpr f ex1) (mapExpr f ex2)
-> mapExpr f (Add ex1 ex2) = Add (mapExpr f ex1) (mapExpr f ex2) 
-
-> mapExprCase :: (Int -> Int) -> Expr -> Expr
-> mapExprCase f expr = case expr of
->                      (Num n) -> Num (f n)
->                      (Mult ex1 ex2) -> Mult(mapExprCase f ex1) (mapExprCase f ex2)
->                      (Add ex1 ex2)  -> Add (mapExprCase f ex1) (mapExprCase f ex2)
-
+> mapExpr f (Num i) = Num (f i)
+> mapExpr f (Add e1 e2) = Add (mapExpr f e1) (mapExpr f e2)
 >
-
-> foldExpr :: (Int -> Int)-> (Int->Int->Int) -> (Int-> Int ->Int)-> Expr -> Int
-> foldExpr fNum fAdd fMult (Num n) = fNum n
-> foldExpr fNum fAdd fMult (Add ex1 ex2) = fAdd (foldExpr fNum fAdd fMult ex1) (foldExpr fNum fAdd fMult ex2)
-> foldExpr fNum fAdd fMult (Mult ex1 ex2) = fMult (foldExpr fNum fAdd fMult ex1) (foldExpr fNum fAdd fMult ex2)
+> foldExpr :: (Int -> b) -> (b -> b -> b) -> (b -> b -> b) -> Expr -> b
+> foldExpr fNum fAdd fMult (Num i)      = fNum i
+> foldExpr fNum fAdd fMult (Add e1 e2)  = fAdd (foldExpr fNum fAdd fMult e1) (foldExpr fNum fAdd fMult e2)
+> foldExpr fNum fAdd fMult (Mult e1 e2) = fMult (foldExpr fNum fAdd fMult e1) (foldExpr fNum fAdd fMult e2)
 
 Now define `value` by means of `foldExpr`.
 
 > valueFold :: Expr -> Int
-> valueFold ex = foldExpr id (\x y -> x+y) (\x y -> x*y) ex
+> valueFold expr = foldExpr id (+) (*) expr
 
 5) Define a function `repeatValue` that computes an infinite list containing the value given as argument.
 
 > repeatValue :: a -> [] a
-> repeatValue n = n : repeatValue n
+> repeatValue x = x : repeatValue x
 
 Define a function `replicateValue` that takes an `n :: Int` as first argument and yields a list of length `n` containing the value given as second argument. Use `repeatValue` and `take` to define the function.
 
-> replicateValue :: Int -> a -> [] a
-> replicateValue maxLenght valueToRepeat = take maxLenght (repeatValue valueToRepeat)
-
-> trueFalses :: [Bool]
-> trueFalses = help2 0
->  where 
->     help2 n = (if even n then True else False) : help2 (n+1)
+> replicateValue :: Int -> Int -> [] Int
+> replicateValue n a = take n (repeatValue a)

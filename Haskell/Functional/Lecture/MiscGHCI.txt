@@ -1,0 +1,350 @@
+λ> reverseString "Hello"
+"olleH"
+λ> reverseString "World"
+"dlroW"
+λ> :r
+[1 of 1] Compiling Functional.Lecture.Misc ( /Users/sad/Documents/Teaching/advanced-programming-ws19/Functional/Lecture/Misc.hs, interpreted )
+Ok, modules loaded: Functional.Lecture.Misc.
+λ> reverseString2 "World"
+"dlroW"
+λ> reverseString2 "Hello"
+"olleH"
+λ> reverse [True, False]
+[False,True]
+λ> reverse "Hello"
+"olleH"
+λ> reverseString [True, False]
+
+<interactive>:63:16-19: error:
+    • Couldn't match expected type ‘Char’ with actual type ‘Bool’
+    • In the expression: True
+      In the first argument of ‘reverseString’, namely ‘[True, False]’
+      In the expression: reverseString [True, False]
+
+<interactive>:63:22-26: error:
+    • Couldn't match expected type ‘Char’ with actual type ‘Bool’
+    • In the expression: False
+      In the first argument of ‘reverseString’, namely ‘[True, False]’
+      In the expression: reverseString [True, False]
+λ> reverse True
+
+<interactive>:64:9-12: error:
+    • Couldn't match expected type ‘[a]’ with actual type ‘Bool’
+    • In the first argument of ‘reverse’, namely ‘True’
+      In the expression: reverse True
+      In an equation for ‘it’: it = reverse True
+    • Relevant bindings include it :: [a] (bound at <interactive>:64:1)
+λ> :r
+[1 of 1] Compiling Functional.Lecture.Misc ( /Users/sad/Documents/Teaching/advanced-programming-ws19/Functional/Lecture/Misc.hs, interpreted )
+Ok, modules loaded: Functional.Lecture.Misc.
+λ> const 42 True 
+42
+λ> const [True, False] 32
+[True,False]
+λ> const "Hello" 32
+"Hello"
+λ> const "Hello" [True,False]
+"Hello"
+λ> ex1
+
+<interactive>:70:1-3: error:
+    • Variable not in scope: ex1
+    • Perhaps you meant ‘exp’ (imported from Prelude)
+λ> :r
+[1 of 1] Compiling Functional.Lecture.Misc ( /Users/sad/Documents/Teaching/advanced-programming-ws19/Functional/Lecture/Misc.hs, interpreted )
+Ok, modules loaded: Functional.Lecture.Misc.
+λ> ex1
+"axc"
+λ> :r
+[1 of 1] Compiling Functional.Lecture.Misc ( /Users/sad/Documents/Teaching/advanced-programming-ws19/Functional/Lecture/Misc.hs, interpreted )
+Ok, modules loaded: Functional.Lecture.Misc.
+λ> ex1
+"axcx"
+λ> :r
+[1 of 1] Compiling Functional.Lecture.Misc ( /Users/sad/Documents/Teaching/advanced-programming-ws19/Functional/Lecture/Misc.hs, interpreted )
+Ok, modules loaded: Functional.Lecture.Misc.
+λ> ex1
+"ac"
+λ> :r
+[1 of 1] Compiling Functional.Lecture.Misc ( /Users/sad/Documents/Teaching/advanced-programming-ws19/Functional/Lecture/Misc.hs, interpreted )
+Ok, modules loaded: Functional.Lecture.Misc.
+λ> ex1'
+"ac"
+λ> :r
+Ok, modules loaded: Functional.Lecture.Misc.
+λ> ex1
+"ac"
+λ> ex1'
+"ac"
+λ> :r
+[1 of 1] Compiling Functional.Lecture.Misc ( /Users/sad/Documents/Teaching/advanced-programming-ws19/Functional/Lecture/Misc.hs, interpreted )
+Ok, modules loaded: Functional.Lecture.Misc.
+λ> foldr (\c res -> (if c == 'b' then id else (c:)) res) [] "ab"
+"a"
+λ> :r
+[1 of 1] Compiling Functional.Lecture.Misc ( /Users/sad/Documents/Teaching/advanced-programming-ws19/Functional/Lecture/Misc.hs, interpreted )
+Ok, modules loaded: Functional.Lecture.Misc.
+λ> ex2
+"a"
+λ> :r
+[1 of 1] Compiling Functional.Lecture.Misc ( /Users/sad/Documents/Teaching/advanced-programming-ws19/Functional/Lecture/Misc.hs, interpreted )
+Ok, modules loaded: Functional.Lecture.Misc.
+λ> ex2
+"ac"
+λ> map (\x -> 42) [1,2,3,4,5]
+[42,42,42,42,42]
+λ> map (const 42) [1,2,3,4,5]
+[42,42,42,42,42]
+λ> :r
+[1 of 1] Compiling Functional.Lecture.Misc ( /Users/sad/Documents/Teaching/advanced-programming-ws19/Functional/Lecture/Misc.hs, interpreted )
+Ok, modules loaded: Functional.Lecture.Misc.
+λ> map (\x -> x + 1) [1,2,3,4,5]
+[2,3,4,5,6]
+λ> map plus1 [1,2,3,4,5]
+[2,3,4,5,6]
+λ> map (+1) [1,2,3,4,5]
+[2,3,4,5,6]
+λ> map ((+) 1) [1,2,3,4,5]
+[2,3,4,5,6]
+λ> map id [1,2,3,4,5]
+[1,2,3,4,5]
+λ> const 42 loop
+
+<interactive>:96:10-13: error: Variable not in scope: loop
+λ> :r
+[1 of 1] Compiling Functional.Lecture.Misc ( /Users/sad/Documents/Teaching/advanced-programming-ws19/Functional/Lecture/Misc.hs, interpreted )
+Ok, modules loaded: Functional.Lecture.Misc.
+λ> const 42 loop
+42
+λ> :t (+) exInt
+
+<interactive>:1:5-9: error: Variable not in scope: exInt
+λ> :r
+[1 of 1] Compiling Functional.Lecture.Misc ( /Users/sad/Documents/Teaching/advanced-programming-ws19/Functional/Lecture/Misc.hs, interpreted )
+Ok, modules loaded: Functional.Lecture.Misc.
+λ> :t (+) exInt
+(+) exInt :: Int -> Int
+λ> const 42 True
+42
+λ> id 42 True
+
+<interactive>:103:1-10: error:
+    • Non type-variable argument in the constraint: Num (Bool -> t)
+      (Use FlexibleContexts to permit this)
+    • When checking the inferred type
+        it :: forall t. Num (Bool -> t) => t
+λ> map (const 42) [1,2,3,4,5]
+[42,42,42,42,42]
+λ> map (\x -> 42) [1,2,3,4,5]
+[42,42,42,42,42]
+λ> map onePlus [1,2,3,4,5]
+
+<interactive>:106:5-11: error:
+    Variable not in scope: onePlus :: Integer -> b
+λ> :r
+[1 of 1] Compiling Functional.Lecture.Misc ( /Users/sad/Documents/Teaching/advanced-programming-ws19/Functional/Lecture/Misc.hs, interpreted )
+Ok, modules loaded: Functional.Lecture.Misc.
+λ> map onePlus [1,2,3,4,5]
+[2,3,4,5,6]
+λ> map (1+) [1,2,3,4,5]
+[2,3,4,5,6]
+λ> map (+1) [1,2,3,4,5]
+[2,3,4,5,6]
+λ> map ((+) 1) [1,2,3,4,5]
+[2,3,4,5,6]
+λ> map (const 42 True) [1,2,3,4,5]
+
+<interactive>:112:1-31: error:
+    • Non type-variable argument in the constraint: Num (a -> b)
+      (Use FlexibleContexts to permit this)
+    • When checking the inferred type
+        it :: forall a b. (Num a, Num (a -> b)) => [b]
+λ> map (const True 42) [True, False, True]
+
+<interactive>:113:6-18: error:
+    • Couldn't match expected type ‘Bool -> b’ with actual type ‘Bool’
+    • Possible cause: ‘const’ is applied to too many arguments
+      In the first argument of ‘map’, namely ‘(const True 42)’
+      In the expression: map (const True 42) [True, False, True]
+      In an equation for ‘it’:
+          it = map (const True 42) [True, False, True]
+    • Relevant bindings include
+        it :: [b] (bound at <interactive>:113:1)
+λ> :t const True 42
+const True 42 :: Bool
+λ> map (+) [1,2,3,4,5]
+
+<interactive>:115:1-19: error:
+    • No instance for (Show (Integer -> Integer))
+        arising from a use of ‘print’
+        (maybe you haven't applied a function to enough arguments?)
+    • In a stmt of an interactive GHCi command: print it
+λ> :t map (+) [1,2,3,4,5]
+map (+) [1,2,3,4,5] :: Num a => [a -> a]
+λ> :t map (const) [True, False, True]
+map (const) [True, False, True] :: [b -> Bool]
+λ> :r
+[1 of 1] Compiling Functional.Lecture.Misc ( /Users/sad/Documents/Teaching/advanced-programming-ws19/Functional/Lecture/Misc.hs, interpreted )
+Ok, modules loaded: Functional.Lecture.Misc.
+λ> let val = (+) 1
+λ> val
+
+<interactive>:120:1-3: error:
+    • No instance for (Show (Integer -> Integer))
+        arising from a use of ‘print’
+        (maybe you haven't applied a function to enough arguments?)
+    • In a stmt of an interactive GHCi command: print it
+λ> let plusOne = (+) 1
+λ> plusOne 5
+6
+λ> plusOne 42
+43
+λ> (+) 1 2
+3
+λ> 1 + 2
+3
+λ> let plus = \x y -> x + y
+λ> plus 1 4
+5
+λ> 1 `plus` 4
+5
+λ> :r
+[1 of 1] Compiling Functional.Lecture.Misc ( /Users/sad/Documents/Teaching/advanced-programming-ws19/Functional/Lecture/Misc.hs, interpreted )
+Ok, modules loaded: Functional.Lecture.Misc.
+λ> doSomething (map (+) [1,2,3,4,5]) 1
+[2,3,4,5,6]
+λ> doSomething (map (+) [1,2,3,4,5]) 5
+[6,7,8,9,10]
+λ> id
+
+<interactive>:132:1-2: error:
+    • No instance for (Show (a0 -> a0)) arising from a use of ‘print’
+        (maybe you haven't applied a function to enough arguments?)
+    • In a stmt of an interactive GHCi command: print it
+λ> :t id
+id :: a -> a
+λ> id 6
+6
+λ> map (+) [1,2,3,4,5]
+
+<interactive>:135:1-19: error:
+    • No instance for (Show (Integer -> Integer))
+        arising from a use of ‘print’
+        (maybe you haven't applied a function to enough arguments?)
+    • In a stmt of an interactive GHCi command: print it
+λ> :t map (+) [1,2,3,4,5]
+map (+) [1,2,3,4,5] :: Num a => [a -> a]
+λ> map (\f -> f 5) (map (+) [1,2,3,4,5])
+[6,7,8,9,10]
+λ> :r
+[1 of 1] Compiling Functional.Lecture.Misc ( /Users/sad/Documents/Teaching/advanced-programming-ws19/Functional/Lecture/Misc.hs, interpreted )
+Ok, modules loaded: Functional.Lecture.Misc.
+λ> :t someFunctions
+someFunctions :: [Int -> Bool]
+λ> map (\f -> 4) someFunctions
+[4,4,4,4]
+λ> :r
+Ok, modules loaded: Functional.Lecture.Misc.
+λ> map (\f -> f 4) someFunctions
+[True,False,False,False]
+λ> map (\f -> f 5) someFunctions
+[True,True,False,False]
+λ> :r
+[1 of 1] Compiling Functional.Lecture.Misc ( /Users/sad/Documents/Teaching/advanced-programming-ws19/Functional/Lecture/Misc.hs, interpreted )
+Ok, modules loaded: Functional.Lecture.Misc.
+λ> map (\f -> f 5) someFunctions
+[True,True,False,False,False]
+λ> :t all
+all :: Foldable t => (a -> Bool) -> t a -> Bool
+λ> :t and
+and :: Foldable t => t Bool -> Bool
+λ> :r
+[1 of 1] Compiling Functional.Lecture.Misc ( /Users/sad/Documents/Teaching/advanced-programming-ws19/Functional/Lecture/Misc.hs, interpreted )
+Ok, modules loaded: Functional.Lecture.Misc.
+λ> 5 `fulfills` someFunctions
+False
+λ>  map (\f -> f 5) someFunctions
+[True,True,False,False,False]
+λ> andList (map (\f -> f 5) someFunctions)
+False
+λ> :r
+[1 of 1] Compiling Functional.Lecture.Misc ( /Users/sad/Documents/Teaching/advanced-programming-ws19/Functional/Lecture/Misc.hs, interpreted )
+Ok, modules loaded: Functional.Lecture.Misc.
+λ> lookupColor intMapEx1 32
+
+<interactive>:153:1-24: error:
+    • No instance for (Show Color) arising from a use of ‘print’
+    • In a stmt of an interactive GHCi command: print it
+λ> :r
+[1 of 1] Compiling Functional.Lecture.Misc ( /Users/sad/Documents/Teaching/advanced-programming-ws19/Functional/Lecture/Misc.hs, interpreted )
+Ok, modules loaded: Functional.Lecture.Misc.
+λ> lookupColor intMapEx1 32
+Nothing
+λ> lookupColor intMapEx1 4
+Just Red
+λ> lookupColor intMapEx1 42
+Just Blue
+λ> lookupColor intMapEx1 13
+Just Green
+λ> lookupColor intMapEx1 13495486878
+Nothing
+λ> :r
+[1 of 1] Compiling Functional.Lecture.Misc ( /Users/sad/Documents/Teaching/advanced-programming-ws19/Functional/Lecture/Misc.hs, interpreted )
+Ok, modules loaded: Functional.Lecture.Misc.
+λ> loopupFunColor intMapFunEx1 32
+
+<interactive>:161:1-14: error:
+    • Variable not in scope:
+        loopupFunColor :: IntMapFun -> Integer -> t
+    • Perhaps you meant one of these:
+        ‘lookupFunColor’ (line 129), ‘lookupColor’ (line 113)
+λ> :r
+Ok, modules loaded: Functional.Lecture.Misc.
+λ> lookupFunColor intMapFunEx1 32
+Nothing
+λ> lookupFunColor intMapFunEx1 4
+Just Red
+λ> lookupFunColor intMapFunEx1 42
+
+<interactive>:165:16-29: error:
+    • Variable not in scope: intMapFunEx142 :: IntMapFun
+    • Perhaps you meant ‘intMapFunEx1’ (line 123)
+λ> lookupFunColor intMapFunEx1 42
+Just Blue
+λ> lookupFunColor intMapFunEx1 13
+Just Green
+λ> :r
+[1 of 1] Compiling Functional.Lecture.Misc ( /Users/sad/Documents/Teaching/advanced-programming-ws19/Functional/Lecture/Misc.hs, interpreted )
+Ok, modules loaded: Functional.Lecture.Misc.
+λ> let newMap = insertMapFun intMapFunEx1 46 Green
+λ> newMap 13
+Just Green
+λ> newMap 15
+Nothing
+λ> newMap 46
+Just Green
+λ> intMapFunEx1 46
+Nothing
+λ> :r
+[1 of 1] Compiling Functional.Lecture.Misc ( /Users/sad/Documents/Teaching/advanced-programming-ws19/Functional/Lecture/Misc.hs, interpreted )
+Ok, modules loaded: Functional.Lecture.Misc.
+λ> let newMap = deleteMapFun intMapFunEx1 13 Green
+
+<interactive>:175:43-47: error:
+    • Couldn't match expected type ‘Int’ with actual type ‘Color’
+    • In the third argument of ‘deleteMapFun’, namely ‘Green’
+      In the expression: deleteMapFun intMapFunEx1 13 Green
+      In an equation for ‘newMap’:
+          newMap = deleteMapFun intMapFunEx1 13 Green
+λ> let newMap = deleteMapFun intMapFunEx1 13
+λ> newMap 13
+Nothing
+λ> intMapFunEx1 13
+Just Green
+Functional/Lecture/DataAndFunctions.lhs:252:3-23: warning: [-Woverlapping-patterns] …
+    Pattern match is redundant
+    In an equation for ‘incButNotIf42’: incButNotIf42 42 = ...
+    |
+λ> :r
+Ok, modules loaded: Functional.Lecture.Misc.
+λ> 

@@ -3,57 +3,25 @@
 > module Functional.Exercise.Exercise5 where
 >
 > import Functional.Lecture.InputOutput (getNumber)
-> import Data.Char
+> import Data.Char (ord, chr)
 
-1. In Haskell `String`s are list of `Char`s. The following definitions should transform the given string "HelloWorld" such that it yields the string specified by the comment above. You are only allowed to use generic list functions like `map`, `foldr`, `filter`, but no manual pattern matching, for the implementation.
-
-> isVowel :: Char -> Bool
-> isVowel 'a' = True
-> isVowel 'A' = True
-> isVowel 'e' = True
-> isVowel 'E' = True
-> isVowel 'i' = True
-> isVowel 'I' = True
-> isVowel 'o' = True
-> isVowel 'O' = True
-> isVowel 'u' = True
-> isVowel 'U' = True
-> isVowel _  = False
-
-> nextChar :: Char -> Char
-> nextChar 'z' = 'a'
-> nextChar 'Z' = 'A'
-> nextChar c = chr (ord c+1)
+1. In Haskell `String`s are list of `Char`s. The following definitions should transform the given string "HelloWorld" such that it yields the string specified by the comment above. You are only allow to use generic list functions like `map`, `foldr`, `filter`, but no manual pattern matching, for the implementation.
 
 > -- str1 "HelloWorld" = "HelloWorld!"
 > str1 :: String -> String
-> str1 str = foldr(\c cs -> c:cs ) "!" str
-
-str1 str = str ++ "!"
-
-
-> -- str2 "HelloWorld" = IfmmpXpsme"
+> str1 str = foldr (:) "!" str
+>
+> -- str2 "HelloWorld" = "IfmmpXpsme"
 > str2 :: String -> String
-> str2 str = map (\c -> nextChar c) str
-
+> str2 str = map (\ch -> chr (ord ch + 1)) str
+>
 > -- str3 "HelloWorld" = "HllWrld"
 > str3 :: String -> String
-> str3 str =  filter (\c -> if not (isVowel c) then False else True) str
+> str3 str = filter (\ch -> not (vowel ch)) str
+>  where
+>   vowel c = elem c "aeiou"
   
-  str3 str =  foldr(\c res -> (if (isVowel c) then res else c:res)) "" str
-
-  str3 str = foldr(\c res -> (if c=='w' then res else c:res)) [] str
 2. Implement a function `getInBounds :: Int -> Int -> IO Int` that reads a number from the user. If the value is not within the given bounds, the user needs to try again to type in a number that meets the bounds. The implementation should additionally behave as illustrated below.
-
-> powerofTens :: [Int]
-> powerofTens = helper 0
->  where 
->    helper n = 10^n : helper (n+1)
-
-> allDigits :: String -> Bool
-> allDigits []     = False
-> allDigits [c]    = isDigit c
-> allDigits (c:cs) = isDigit c && allDigits cs
 
    $> getInBounds 12 16
    Please type in a number between 12 and 16.
@@ -63,55 +31,40 @@ str1 str = str ++ "!"
    This input is not a number, please try again.
    13
 
-Hint: You should reuse `getNumber` defined in the lectures as well as the helper function `inBounds` (based on an implmentation given in `Lecture.MoreData`).
-
-> charToInt :: Char -> Int 
-> charToInt '0' = 0
-> charToInt '1' = 1
-> charToInt '2' = 2
-> charToInt '3' = 3
-> charToInt '4' = 4
-> charToInt '5' = 5
-> charToInt '6' = 6
-> charToInt '7' = 7
-> charToInt '8' = 8
-> charToInt '9' = 9
-
-> strToInt :: String -> Int 
-> strToInt str = foldr(\(c,tens) rem -> (charToInt c) * tens + rem) 0 (zip (reverse str) powerofTens)
-
-> strToPutString :: String -> IO ()
-> strToPutString st = putStrLn st
+Hint: You should reuse `getNumber` and `inBounds` that we defined in previous lectures.
 
 > getInBounds :: Int -> Int -> IO Int
-> getInBounds int1 int2 =  putStrLn ("Please type in a number between "++ show int1 ++ " and "++ show int2) >> getInBounds' int1 int2
->   where
->   getInBounds' min max = getNumber >>= (\value -> if (inBounds value (min, max)) 
->                                                 then pure value
->                                                 else putStrLn "The number does not meet the given bounds, please try again." >> getInBounds' min max )
-                                            
+> getInBounds min max = putStrLn ("Please type in a number between " ++ show min ++ " and " ++ show max ++ ".") >>
+>               getNumber >>= (\n ->
+>                 if inBounds n (max, min)
+>                   then pure n
+>                   else putStrLn "The number does not meet the given bounds, please try again" >> getInBounds min max)
+>
 > inBounds :: Int -> (Int,Int) -> Bool
-> inBounds x (xMin,xMax) = (x <= xMax) && (x >= xMin)
+> inBounds x (xMax, xMin) = (x <= xMax) && (x >= xMin)
 
-
-3. Implement a more general function `getStringWithCondition :: (String -> Bool) -> IO String` that reads a string from the user and only yield this value if the string obeys to the corresponding prediate. If the predicate does not hold, the user should be informed to try it again.
+3. Implement a more general function `geStringWithCondition :: (String -> Bool) IO String` that reads a string from the user and only yield this value if the string obeys to the corresponding prediate. If the predicate does not hold, the user should be informed to try it again.
 
 > getStringWithCondition :: (String -> Bool) -> IO String
-> getStringWithCondition pStr = getLine >>= (\value -> ( if(pStr value) then pure value else (getStringWithCondition pStr)))
-
-getStringWithCondition (\n -> if (n=="Hello") then True else False)
+> getStringWithCondition pStr = getLine >>= \str ->
+>                               if pStr str
+>                                 then pure str
+>                                 else putStrLn "Try again." >> getStringWithCondition pStr
 
 4. Implement an interactive number guessing game. The game `guessNumber` expects the "secret number" as argument and gives feedback for each guess and the game is completed, if the guessed number matches the secret. Otherwise the user gets feedback if the guess was "too small" or "too large".
 Hint: Reuse the function `getNumber` from the lecture.
 
 > guessNumber :: Int -> IO ()
-> guessNumber value = putStrLn "Let's try to guess the number!" >> guessHelp value
->  where 
->    guessHelp intV = getNumber >>= (\n -> if (n==intV) 
->                  then putStrLn "Congrats, you guessed the number!"  
->                  else (if(n > intV)
->                        then putStrLn "Your guess is too large. Try again." >> guessHelp intV
->                        else putStrLn "Your guess is too small. Try again.">> guessHelp intV ))
+> guessNumber secretNumber =
+>   putStrLn "Let's try to guess the number!" >>
+>   gameLoop
+>  where
+>   gameLoop = getNumber >>= (\userGuess ->
+>              if userGuess == secretNumber
+>                then putStrLn "Congrats, you guessed the number!"
+>                else if userGuess < secretNumber
+>                       then putStrLn "Your guess is too small. Try again." >> gameLoop
+>                       else putStrLn "Your guess is too large. Try again." >> gameLoop)
 
 A round might look like this! Note, that this is a two-player game: the user starting the game shouldn't be the one guessing the numbers ; )
   
@@ -142,6 +95,7 @@ A round might look like this! Note, that this is a two-player game: the user sta
      421
      Congrats, you guessed the number!
 
+
 5. Give the types for the following expressions.
 
    a) `map ((+) 1)`
@@ -149,6 +103,12 @@ A round might look like this! Note, that this is a two-player game: the user sta
    c) `foldr (+)`
    d) `filter ((>) 4)`
    e) `map (*)`
+
+a) [] Int -> [] Int
+b) [Int -> Int]
+c) Int -> [] Int -> Int
+d) [] Int -> [] Int
+e) [] Int -> [] (Int -> Int)
 
 6. Which of these type signatures are valid for the function `map`.
 
@@ -158,6 +118,12 @@ A round might look like this! Note, that this is a two-player game: the user sta
    d) `map :: Bool -> (Bool -> [] Bool -> [] Bool)`
    e) `map :: String -> (Bool -> [] String) -> [] Bool`
 
+a) valid
+b) not valid
+c) valid
+d) not valid
+e) not valid
+   
 7. We want to represent a set of `Int` values as function `Int -> Bool`, that is, the resulting `Bool` indicates if the argument passed is part of the set (for `True`) or not (for `False`).
 
 > type Set = Int -> Bool
@@ -167,14 +133,7 @@ We can, for example, define the empty set as follows.
 > empty :: Set
 > empty = \_ -> False
 
-> exSet1 :: Set
-> exSet1 1 = True
-> exSet1 2 = True
-> exSet1 3 = True
-> exSet1 _ = False
-
-
-Since our representation of `Set` is a function, the empty set is the function that yields `False` for every argument: because no value is part (of) the empty set! That is, the representation of our function is based on the "lookup"-function (we used the first idea in the lecture (see `Misc.hs` for reference)).
+Since our representation of `Set` is a function, the empty set is the function that yields `False` for every argument: because no value is part of the empty set! That is, the representation of our function is based on the "lookup"-function (we used the first idea in the lecture (see `Misc.hs` for reference)).
 The idea becomes more clear when we "inline" the type synonym `Set` (here we use an additional comment) and rename the `set`-variable to `isInSet` to indicate that this argument is a function that yields a boolean value (i.e., a predicate).
 
    > isElem :: Int -> Set -> Bool
@@ -190,17 +149,15 @@ Based on this representation, define the following functions.
 
 > -- Inserts the first argument to the `Set`.
 > insert :: Int -> Set -> Set
-> insert value inputSet = \v -> v == value || inputSet v
-
-
+> insert insertVal isInSet = \lookupVal -> lookupVal == insertVal || isInSet lookupVal
 >
 > -- The new set should yield `True` if a value is in the first set or if it is part of the second set.
 > union :: Set -> Set -> Set
-> union set1 set2 = \val -> set1 val || set2 val
-
+> union isInSet1 isInSet2 = \lookupVal -> isInSet1 lookupVal || isInSet2 lookupVal
+>
 > -- The new set should yield `True` if a value is in the first set and of the second set.
 > intersection :: Set -> Set -> Set
-> intersection set1 set2 = \lookupVal -> set1 lookupVal && set2 lookupVal 
+> intersection isInSet1 isInSet2 = \lookupVal -> isInSet1 lookupVal && isInSet2 lookupVal
 
 For testing purposes, you want the following properties to hold.
 
@@ -224,12 +181,3 @@ You can also use the following function `fromList` to convert a list into a `Set
 
 > toList :: [] Int -> Set
 > toList list = foldr insert empty list
-        
-> funct :: (Int -> Int) -> Int -> Int
-> funct f x = f (f x)
-
-
-> hello x y = let r = 4
->                 s = 5
->                 in r*x + s*y
-

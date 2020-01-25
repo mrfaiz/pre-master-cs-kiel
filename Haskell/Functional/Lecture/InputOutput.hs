@@ -157,10 +157,22 @@ getPowerOfTens = getNumber >>= (\n -> pure (take n powerOfTens))
 lilProgram :: IO ()
 lilProgram = writeFile "Tens.txt" (show (take 42 powerOfTens))
 
+exampleString :: [] String 
+exampleString = ["Welcome! Enter a number :","123"]
+
+writeIntoFileExampleArray :: IO ()
+writeIntoFileExampleArray = writeFile "example.txt" "123"
+
+readFileString :: IO () 
+readFileString = readFile "example.txt" >>= (\str -> putStrLn str >> getLine >>= (\str2 -> if str2==str then putStrLn "Successfule" else putStrLn "not Match!"))
+
 lilProgram2 :: IO ()
 lilProgram2 = readFile "Tens.txt" >>= (\str -> writeFile "TensReverse.txt" (show (reversedList str)))
   where reversedList str = reverse (read str :: [Int])
 
+--lilProgram3 :: [Int]
+--lilProgram3 = readFile "Tens.txt" >>= (\str -> reversedList str)
+  --where reversedList str = reverse (read str :: [Int])
 
 allDigit :: String -> Bool
 allDigit []     = False
@@ -183,3 +195,63 @@ digitToInt '6' = 6
 digitToInt '7' = 7
 digitToInt '8' = 8
 digitToInt '9' = 9
+
+-------------------------
+
+nats :: [Int]
+nats = nats' 1
+ where nats' n = n : nats' (n+1)
+
+
+getIntInRange :: Int -> Int -> IO Int
+getIntInRange min max = putStr ("Enter a number from "++ show min ++" to "++show max++" : ") >> getNumber >>= (\n -> 
+  if n>=min && n<=max 
+    then pure n 
+    else putStrLn ("Not in Range from "++ show min ++" to "++show max++". Try again ") >> getIntInRange min max)
+
+displayMenu :: [String] -> IO ()
+displayMenu str = putStrLn (foldr(\(index,name) res -> ("\n ("++ show index++") "++ name) ++ res) "\n" (zip nats str))
+-- displayMenu ["Hangman", "Guess a Number", "Rock, Paper, Scissors"]
+
+data TwoPlayer where
+ A :: TwoPlayer
+ B :: TwoPlayer
+ deriving Show
+
+data GameResult where
+ Win :: TwoPlayer -> GameResult
+ Lose :: TwoPlayer -> GameResult
+ Draw :: GameResult
+ deriving Show
+
+values :: [( String , IO GameResult )]
+values = [("Hangman", return (Win A)),("Guess a Number", return (Win B)),("Rock, Paper, Scissors", return (Win A))]
+
+getFromList :: String ->  [( String , IO GameResult )] -> IO GameResult
+getFromList _ [] = return Draw
+getFromList str ((name, io):rest)= if str == name then io else getFromList str rest
+
+getGameNameByIndex :: Int -> String
+getGameNameByIndex n = ["Hangman", "Guess a Number", "Rock, Paper, Scissors"] !! (n-1)
+
+
+--printMessage :: 
+
+--menu :: [( String , IO GameResult)] -> IO ()
+--menu games = putStrLn (" Which   game  do  you   want  to  play ?"++ show (Win A)) >>  displayMenu ["Hangman", "Guess a Number", "Rock, Paper, Scissors"] >> 
+
+getLineExample :: IO String 
+getLineExample = getLine >>= (\str -> return (reverse str))
+
+getLineExample2 :: IO String 
+getLineExample2 = getLine >>= return.reverse
+
+
+
+data Exp a b  where
+   Lit :: a -> Exp a b
+   Binary :: Exp a b -> b -> Exp a b -> Exp a b
+   deriving Show
+
+value1 :: Exp Int Bool
+value1 = Binary (Lit 2) False (Lit 3)

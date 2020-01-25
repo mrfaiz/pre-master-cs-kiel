@@ -15,13 +15,16 @@ We implemented the following type synonym for a `Integer`-bound.
 example : moveWithinBounds (50,-50) (50,-50) Data.Up (Data.XYAxis 15 16)
 
 > checkIfCoordIsInBounds ::  Data.Bounds -> Data.Bounds -> Data.Coordinate -> Bool
-> checkIfCoordIsInBounds (xMax, xMin) (yMax, yMin) (Data.XYAxis x y) = if (((x <= xMax) && (x >= xMin)) && ((y <= yMax) && (y >= yMin))) then True else False
+> checkIfCoordIsInBounds b1 b2 (Data.XYAxis x y) = (inBound x b1) && (inBound y b2)
+
+> inBound :: Integer -> Data.Bounds -> Bool
+> inBound input (max, min) = (input <= max) && (input >= min)
 
 > moveWithinBounds :: Data.Bounds -> Data.Bounds -> Data.Direction -> Data.Coordinate -> Data.Coordinate
-> moveWithinBounds (xMax, xMin) (yMax, yMin) dir (Data.XYAxis x y) = 
->    if (checkIfCoordIsInBounds (xMax, xMin) (yMax, yMin) (Data.moveByDirection dir (Data.XYAxis x y)))
->      then (Data.moveByDirection dir (Data.XYAxis x y)) 
->      else (Data.XYAxis x y)
+> moveWithinBounds xBound yBound dir axis = 
+>    if (checkIfCoordIsInBounds xBound yBound (Data.moveByDirection dir axis))
+>      then Data.moveByDirection dir axis 
+>      else axis
 
 2) Evaluate the following expression step-by-step, specifying the demanded argument as well as the applied rule as done in the lecture, for the constant function `boolEx4`.
 
@@ -193,3 +196,4 @@ replaceTokenInField = error "replaceTokenInField: Implement me!"
 > hasTokenInRow :: Token -> Row -> Bool
 > hasTokenInRow _ EmptyR = False
 > hasTokenInRow token (ARow tk nextRow) = (eqToken token tk) || (hasTokenInRow token nextRow)
+

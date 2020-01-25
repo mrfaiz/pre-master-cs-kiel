@@ -322,3 +322,9 @@ Last but not least, we can use the abstraction mechanism of polymorphic data str
 >                           -- we could also write it mixfix: [(key, value)]
 
 As for polymorphic data types, we introduce the type variable on the left-hand side of the type synonym definition, here `key` and `value` are the type parameters corresponding to the types used as first and second component of the pair.
+
+> usePoly :: KeyValuePairs Int String 
+> usePoly = [(1,"key")]
+
+> function :: Int -> Either Int Bool
+> function a = if a==1 then (Left a) else (Right False) 

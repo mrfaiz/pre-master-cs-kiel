@@ -183,6 +183,7 @@ That is, instead of using a local function defintion we can define `assignFalse`
 > assignFalse list = zip list (repeat False)
 
 As long as the arguments of `numberedList`, `assignTrue` and `assignFalse` terminate, the overall computation will terminate as well as though we use `zip` with an infinite list as second argument.
+   
    The crucial point here is that functions like `repeat`, `nats` or `trues` are non-terminating functions that produce data while the functions `loop` is merely non-terminating that does not do any process during evaluation.
    Due to this difference, we say that functions like `repeat`, `nats` and `trues` describe infinite data, while `loop` is merely a non-terminating function.
 

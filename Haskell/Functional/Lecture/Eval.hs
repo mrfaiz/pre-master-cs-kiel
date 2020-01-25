@@ -24,7 +24,7 @@ data (,) a b where
 -}
 
 trues :: [] Bool
-trues = True : trues
+trues = True: trues
 
 nats :: [] Int
 nats = nats' 0
@@ -206,3 +206,74 @@ hasElemFold list elemToFind = foldList eF cF list
 = 1 * 2
 = 2
 -}
+
+data List a where
+  Nil  :: List a 
+  Cons :: a ->  List a-> List a
+  deriving Show
+
+list1 :: List String
+list1 = Cons "2123" Nil
+
+take1:: Int -> [] a -> [] a
+take1 _ []     = []
+take1 0 _      = []
+take1 n (x:xs) = x:take1 (n-1) xs 
+
+listAppend :: [] a -> [] a -> [] a 
+listAppend [] ys     = ys 
+listAppend (x:xs) ys = x:listAppend xs ys
+
+loop :: Int
+loop = loop
+
+data LeafLabeledTree a where 
+  Leaf :: a -> LeafLabeledTree a
+  Node :: LeafLabeledTree a -> LeafLabeledTree a -> LeafLabeledTree a 
+  deriving Show 
+
+makeTree :: LeafLabeledTree Int
+makeTree =  Node (Node (Node (Leaf 1) (Leaf 2)) (Node (Leaf 3) (Leaf 4))) (Node (Node (Leaf 5) (Leaf 6)) (Node (Leaf 7) (Leaf 8)))
+
+
+foldTree :: (a->b) -> (b ->b -> b) -> b -> LeafLabeledTree a -> b
+foldTree fL fN vEmtyp (Leaf x) = (fL x) 
+foldTree fL fN vEmtyp (Node left right) = fN (foldTree fL fN vEmtyp left) (foldTree fL fN vEmtyp right)
+
+mapTree :: LeafLabeledTree Int -> [] Int
+mapTree tree = foldTree fL sumFunction [] tree
+ where 
+   fL x = [x]
+   sumFunction = (++)
+
+sumTree :: LeafLabeledTree Int ->  Int
+sumTree tree = foldTree id sumFunction 0 tree
+ where 
+   sumFunction = (+)
+
+
+listToTree :: [] Int -> LeafLabeledTree Int
+listToTree [] = error "need minimum two value"
+listToTree [x] = (Leaf x)
+listToTree (x:xs) = Node (Leaf x) (listToTree xs)
+
+f:: Int -> Int
+f x = x*2
+
+t:: (a -> a) -> a -> a 
+t f x = f ( f x )
+
+t2:: (a -> a) -> (a -> a) 
+t2 f x =  f (f x)
+
+data Tree a b where
+   Tip :: a-> Tree a b 
+   Branch :: (Tree a b) -> b -> (Tree a b) -> Tree a b
+   deriving Show
+
+data1 :: Tree String () 
+data1 = Branch (Tip "Hallo") () (Tip "Welt")
+
+
+data2 :: Tree Int String
+data2 = Branch (Tip 1) "String" (Tip 1)

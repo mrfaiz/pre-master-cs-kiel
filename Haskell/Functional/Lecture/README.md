@@ -8,3 +8,5 @@
 6. Polymorphism
 7. Folding
 8. InfiniteData
+9. IO
+10. FunctionsAgain

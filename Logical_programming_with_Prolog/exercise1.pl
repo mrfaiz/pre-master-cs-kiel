@@ -104,7 +104,7 @@ brother_in_law(B,P) :- siblings(P,B1),male(B),spouse(B1,B).
 
 % list exercise
 
-member2(E,[E|_]).
+member2(E,[E|Xs]) :- member(E,Xs).
 member2(E,[_|Xs]) :- member2(E,Xs).
 
 app([],Ys,Ys).

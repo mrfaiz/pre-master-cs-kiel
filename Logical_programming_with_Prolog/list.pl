@@ -116,3 +116,6 @@ rev_dl([X|Xs],Zs,R) :- rev_dl(Xs,Zs,[X|R]).
 
 revL(List,Result):-rev_dl(List,Result,[]).
 
+findMin([X],X).
+findMin([X,Y|Xs],R):- X=<Y,findMin([X|Xs],R).
+findMin([X,Y|Xs],R):- X>Y,findMin([Y|Xs],R).

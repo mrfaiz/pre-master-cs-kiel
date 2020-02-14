@@ -20,3 +20,34 @@ remove(X,[Y|Xs],[Y|Ys]):- \+ X=Y, remove(X,Xs,Ys).
 nub([],[]).
 nub([X|Xs],[X|Ys]) :- \+ member(X,Xs), nub(Xs,Ys).
 nub([X|Xs],Ys)     :- member(X,Xs),nub(Xs,Ys). 
+
+/**
+ 4.More SLD-Resolution
+
+
+Consider the following predicate for deleting an element from a list.
+delete(_, [],     []).
+delete(X, [Y|Xs], Xs)     :- X = Y.
+delete(X, [Y|Xs], [Y|Ys]) :- delete(X, Xs, Ys).
+Prove the query
+?- delete(1, [1, 0+1], Xs).
+by means of Prolog's evaluation strategy and specify all intermediate results and solutions.
+You can either display your solution as an SLD tree and specify the search order used by Prolog or note the search sequentially (as in the lecture).
+
+
+Modify the above program so that
+
+only the first occurrence of the first parameter is removed from the list.
+all occurrences of the first parameter are removed from the list.
+*/
+
+deleteFirst(_,[],[]).
+deleteFirst(N,[N|Xs],Xs):- !.
+deleteFirst(N,[X|Xs],[X|Ys]) :-  deleteFirst(N,Xs,Ys).
+
+deleteAll(_,[],[]).
+deleteAll(N,[N|Xs],Zs):- deleteAll(N,Xs,Zs).
+deleteAll(N,[X|Xs],[X|Ys]):- \+ N=X,deleteAll(N,Xs,Ys).
+
+
+

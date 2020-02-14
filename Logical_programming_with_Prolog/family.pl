@@ -23,7 +23,7 @@ father(Child,F):- mother(Child,Mom),husband(Mom,F).
 grandmother(C,G) :- mother(C,Cmom),mother(Cmom,G).
 grandfather(GChild,GF) :- grandmother(GChild,Gmother),husband(Gmother,GF).
 
-siblings(Sof,S) :- mother(Sof,M),mother(S,M),Sof\=S.
+siblings(Sof,S) :- mother(Sof,M),mother(S,M), Sof\=S.
 
 sister(SisOf,Sresult) :- siblings(SisOf,Sresult),female(Sresult).
 
@@ -48,11 +48,24 @@ brother(B,P) :- siblings(B,P),male(B).
 brother_in_law(B,P) :- brother(B,B1),spouse(B1,P).
 brother_in_law(B,P) :- siblings(P,B1),male(B),spouse(B1,B).
 
-likes(trisha,pizza).
-likes(faiz,pizza).
 
 findAllChilds(P,L) :- findall((P,M), mother(P,M),L).
 
+siblings2(Sof,Person) :- Sof\=Person,mother(Sof,M),mother(Person,M).
+/**
+ * siblings(S,P) :- \+ S = P, mother(S,M), mother(P,M).
+A proof could then look as follows.
+?- siblings(angela,P).
+`
+?- \+ angela=P, mother(angela,M), mother(P,M).
+` delay evaluation of first literal
+and prove second literal
+?- \+ angela=P, mother(P,christine).
+`
+?- \+ angela=john.
+`
+?-.
+ */
 
 p(X,Z):-q(X,Y),p(Y,Z).
 p(X,X).

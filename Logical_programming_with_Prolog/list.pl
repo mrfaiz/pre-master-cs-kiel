@@ -10,8 +10,8 @@ tree(branch(LT,RT)) :- tree(LT),tree(RT).
 list([]).
 list([_|Xs]) :- list(Xs).
 
-member2(E,[E|_]).
-member2(E,[_|Xs]) :- member2(E,Xs).
+member3(E,[E|_]).
+member3(E,[_|Xs]) :- member3(E,Xs).
 
 app([],Ys,Ys).
 app([X|Xs],Ys,[X|Zs]) :- app(Xs,Ys,Zs).
@@ -78,7 +78,41 @@ lastElem(X,[X|[]]).
 lastElem(X,[_|Zs]):-lastElem(X,Zs).
 
 subset([],_).
-subset([X|Xs],Zs):-member2(X,Zs),subset(Xs,Zs).
+subset([X|Xs],Zs):-member3(X,Zs),subset(Xs,Zs).
 
 disjoin([],_).
-disjoin([X|Xs],Zs):- not(member2(X,Zs)),disjoin(Xs,Zs).
+disjoin([X|Xs],Zs):- not(member3(X,Zs)),disjoin(Xs,Zs).
+
+delete(L1,E,Res) :- app(Xs,[E|Ys],L1),app(Xs,Ys,Res). 
+
+deleteTwo(L1,E1,E2,Res):-delete(L1,E1,Temp),delete(Temp,E2,Res).
+
+p(X):-q(X),q(a),!.
+p(X):-q(X),!,q(c).  % Y=b is not true.. Only Y=c is ok.
+p(b).
+
+q(b) :- q(a).
+q(c).
+
+%%findall(X, member(X, [21, 42, 73]), L).
+% findall(X,perm([1,2,3],X),L).
+
+
+deleteFirst(_,[],[]).
+deleteFirst(N,[X|Xs],Xs) :- N=X,!.
+deleteFirst(N,[X|Xs],[X|Ys]):- \+ N=X,deleteFirst(N,Xs,Ys).
+
+
+rev([],[]).
+rev([X|Xs],Res):- rev(Xs,Temp),app(Temp,[X],Res).
+
+rev2([],[]).
+rev2([X|Xs],Res):- app(Temp,[X],Res), rev2(Xs,Temp),!.
+
+append_dl(M-N,N-O,M-O).
+
+rev_dl([],Ys,Ys).
+rev_dl([X|Xs],Zs,R) :- rev_dl(Xs,Zs,[X|R]).
+
+revL(List,Result):-rev_dl(List,Result,[]).
+
